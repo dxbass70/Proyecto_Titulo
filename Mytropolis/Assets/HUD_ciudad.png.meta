@@ -1,0 +1,359 @@
+fileFormatVersion: 2
+guid: b0fcab283cebac5428c17fd071095549
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3000477049476456578
+    second: HUD_ciudad_0
+  - first:
+      213: 4329974398075853615
+    second: HUD_ciudad_1
+  - first:
+      213: -3410624273785252077
+    second: HUD_ciudad_2
+  - first:
+      213: -9218713223779022501
+    second: HUD_ciudad_3
+  - first:
+      213: -3951559490485080367
+    second: HUD_ciudad_4
+  - first:
+      213: -5510713815177282816
+    second: HUD_ciudad_5
+  - first:
+      213: -6711405582291924481
+    second: HUD_ciudad_6
+  - first:
+      213: -7002679301429953287
+    second: HUD_ciudad_7
+  - first:
+      213: -2244327940848644662
+    second: HUD_ciudad_8
+  - first:
+      213: 61734945956828931
+    second: HUD_ciudad_9
+  - first:
+      213: 2589842348483128627
+    second: HUD_ciudad_10
+  - first:
+      213: -1353994179837639107
+    second: HUD_ciudad_11
+  - first:
+      213: -2897428838394338245
+    second: HUD_ciudad_12
+  - first:
+      213: -9205800376159774246
+    second: HUD_ciudad_13
+  - first:
+      213: -105398053989665073
+    second: HUD_ciudad_14
+  - first:
+      213: 4823889941993159802
+    second: HUD_ciudad_15
+  - first:
+      213: -7488551523532039936
+    second: HUD_ciudad_16
+  - first:
+      213: 8120683707699954217
+    second: HUD_ciudad_17
+  - first:
+      213: -5302740666252033604
+    second: HUD_ciudad_18
+  - first:
+      213: -3064665361974285638
+    second: HUD_ciudad_19
+  - first:
+      213: 4551217683540173855
+    second: HUD_ciudad_20
+  - first:
+      213: 3527080406002980350
+    second: HUD_ciudad_21
+  - first:
+      213: 464609197282000452
+    second: HUD_ciudad_22
+  - first:
+      213: -8132399047537596075
+    second: HUD_ciudad_23
+  - first:
+      213: -6915009142778916880
+    second: HUD_ciudad_24
+  - first:
+      213: 6300239206164574713
+    second: HUD_ciudad_25
+  - first:
+      213: -7593180950842446554
+    second: HUD_ciudad_26
+  - first:
+      213: 9082077471894814861
+    second: HUD_ciudad_27
+  - first:
+      213: 1270231255177226908
+    second: HUD_ciudad_28
+  - first:
+      213: 8059203716994085028
+    second: HUD_ciudad_29
+  - first:
+      213: -4912170753308669054
+    second: HUD_ciudad_30
+  - first:
+      213: 3991089368640371605
+    second: HUD_ciudad_31
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HUD_ciudad_1
+      rect:
+        serializedVersion: 2
+        x: 2849
+        y: 3381
+        width: 734
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2bd8db16c8271c30800000000000000
+      internalID: 4329974398075853615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 3307
+        width: 696
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31794b21b470ba0d0800000000000000
+      internalID: -3410624273785252077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_3
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 3362
+        width: 730
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5984727a2d801080800000000000000
+      internalID: -9218713223779022501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_22
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1996
+        width: 860
+        height: 939
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e7f537a9f927600800000000000000
+      internalID: 464609197282000452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_28
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 2017
+        width: 822
+        height: 890
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9aef6bb894c0a110800000000000000
+      internalID: 1270231255177226908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_29
+      rect:
+        serializedVersion: 2
+        x: 2743
+        y: 2063
+        width: 1065
+        height: 870
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0b0f3c41b08df60800000000000000
+      internalID: 8059203716994085028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_31
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 423
+        width: 3878
+        height: 1148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bb5a492a2336730800000000000000
+      internalID: 3991089368640371605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
