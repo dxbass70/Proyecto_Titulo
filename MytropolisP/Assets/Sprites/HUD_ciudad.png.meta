@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b0fcab283cebac5428c17fd071095549
+guid: 3bd35a399c8cb824da987feaebb1e350
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -26,78 +26,6 @@ TextureImporter:
   - first:
       213: -7002679301429953287
     second: HUD_ciudad_7
-  - first:
-      213: -2244327940848644662
-    second: HUD_ciudad_8
-  - first:
-      213: 61734945956828931
-    second: HUD_ciudad_9
-  - first:
-      213: 2589842348483128627
-    second: HUD_ciudad_10
-  - first:
-      213: -1353994179837639107
-    second: HUD_ciudad_11
-  - first:
-      213: -2897428838394338245
-    second: HUD_ciudad_12
-  - first:
-      213: -9205800376159774246
-    second: HUD_ciudad_13
-  - first:
-      213: -105398053989665073
-    second: HUD_ciudad_14
-  - first:
-      213: 4823889941993159802
-    second: HUD_ciudad_15
-  - first:
-      213: -7488551523532039936
-    second: HUD_ciudad_16
-  - first:
-      213: 8120683707699954217
-    second: HUD_ciudad_17
-  - first:
-      213: -5302740666252033604
-    second: HUD_ciudad_18
-  - first:
-      213: -3064665361974285638
-    second: HUD_ciudad_19
-  - first:
-      213: 4551217683540173855
-    second: HUD_ciudad_20
-  - first:
-      213: 3527080406002980350
-    second: HUD_ciudad_21
-  - first:
-      213: 464609197282000452
-    second: HUD_ciudad_22
-  - first:
-      213: -8132399047537596075
-    second: HUD_ciudad_23
-  - first:
-      213: -6915009142778916880
-    second: HUD_ciudad_24
-  - first:
-      213: 6300239206164574713
-    second: HUD_ciudad_25
-  - first:
-      213: -7593180950842446554
-    second: HUD_ciudad_26
-  - first:
-      213: 9082077471894814861
-    second: HUD_ciudad_27
-  - first:
-      213: 1270231255177226908
-    second: HUD_ciudad_28
-  - first:
-      213: 8059203716994085028
-    second: HUD_ciudad_29
-  - first:
-      213: -4912170753308669054
-    second: HUD_ciudad_30
-  - first:
-      213: 3991089368640371605
-    second: HUD_ciudad_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -195,15 +123,36 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: HUD_ciudad_0
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 2541
+        width: 541
+        height: 589
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f5e3d450a2c56d0800000000000000
+      internalID: -3000477049476456578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: HUD_ciudad_1
       rect:
         serializedVersion: 2
-        x: 2849
-        y: 3381
-        width: 734
-        height: 400
+        x: 1321
+        y: 2533
+        width: 540
+        height: 588
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +168,12 @@ TextureImporter:
       name: HUD_ciudad_2
       rect:
         serializedVersion: 2
-        x: 239
-        y: 3307
-        width: 696
-        height: 396
+        x: 2301
+        y: 2573
+        width: 677
+        height: 544
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,12 +189,12 @@ TextureImporter:
       name: HUD_ciudad_3
       rect:
         serializedVersion: 2
-        x: 1601
-        y: 3362
-        width: 730
-        height: 343
+        x: 3394
+        y: 2529
+        width: 378
+        height: 552
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,85 +207,85 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD_ciudad_22
+      name: HUD_ciudad_4
       rect:
         serializedVersion: 2
-        x: 315
-        y: 1996
-        width: 860
-        height: 939
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44e7f537a9f927600800000000000000
-      internalID: 464609197282000452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HUD_ciudad_28
-      rect:
-        serializedVersion: 2
-        x: 1571
-        y: 2017
-        width: 822
-        height: 890
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9aef6bb894c0a110800000000000000
-      internalID: 1270231255177226908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HUD_ciudad_29
-      rect:
-        serializedVersion: 2
-        x: 2743
-        y: 2063
-        width: 1065
-        height: 870
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a0b0f3c41b08df60800000000000000
-      internalID: 8059203716994085028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HUD_ciudad_31
-      rect:
-        serializedVersion: 2
-        x: 61
+        x: 62
         y: 423
-        width: 3878
-        height: 1148
+        width: 3879
+        height: 1147
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59bb5a492a2336730800000000000000
-      internalID: 3991089368640371605
+      spriteID: 1de20d4649d3929c0800000000000000
+      internalID: -3951559490485080367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 3311
+        width: 679
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b358b6bf20683b0800000000000000
+      internalID: -5510713815177282816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_6
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 3378
+        width: 732
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff98ae37e2c4cd2a0800000000000000
+      internalID: -6711405582291924481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_ciudad_7
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 3384
+        width: 730
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc7942f64c71de90800000000000000
+      internalID: -7002679301429953287
       vertices: []
       indices: 
       edges: []

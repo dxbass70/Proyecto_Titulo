@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,8 +9,8 @@ public class SceneSwitcher : MonoBehaviour
 {
     public void TransicionCiudad()
     {
-    	SceneManager.LoadScene(1);
-    	Debug.Log ("Transicion a ciudad");
+        SceneManager.LoadScene(1);
+        Debug.Log("Transicion a ciudad");
     }
 
 }
