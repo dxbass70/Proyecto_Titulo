@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public void TransicionCiudad()
+    public void TransicionEscena(string NombreEscena)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(NombreEscena);
         Debug.Log("Transicion a ciudad");
     }
 

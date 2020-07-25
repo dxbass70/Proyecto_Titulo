@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ciudad.unity
     guid: 233004a5693bc6c429508d3a856d06c7
+  - enabled: 1
+    path: Assets/Scenes/Actividad1.unity
+    guid: be04226a212bb264c9932c536c5f5e96
   m_configObjects: {}
