@@ -11,6 +11,7 @@ public class CtrlActividad1 : MonoBehaviour
     public GameObject GeneradorBasura;
     public GameObject Ventanapuntaje;
     public Text TextPuntaje;
+    public Text PuntajeJuego;
     public Text Textmonedas;
     public lives vida_canvas;
     // Start is called before the first frame update
@@ -30,15 +31,16 @@ public class CtrlActividad1 : MonoBehaviour
             TextPuntaje.text = "Puntaje: " + Puntaje.ToString();
             Monedas = Puntaje*10;
             Textmonedas.text = Monedas.ToString();
-            Debug.Log("Activada ventana" + Ventanapuntaje.name);
+            //Debug.Log("Activada ventana" + Ventanapuntaje.name);
             Vidas--;//se setean las vidas a -1 para evitar que se repita la funcion
         }
         }
+        PuntajeJuego.text = "Puntaje: " + Puntaje.ToString();
     }
 
     public void IncrementarPuntos(){
         Puntaje++;
-        Debug.Log(Puntaje);
+        //Debug.Log(Puntaje);
     }
 
     public void DisminuirVidas(){
@@ -48,7 +50,7 @@ public class CtrlActividad1 : MonoBehaviour
         else{
             Vidas--;
             vida_canvas.CambioVida((int)Vidas);
-            Debug.Log(Vidas);
+            //Debug.Log(Vidas);
             }
         
     }

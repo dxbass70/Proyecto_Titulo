@@ -4,7 +4,8 @@
 public class CtrlBasurero : MonoBehaviour {
 
     public GameObject ActivityCtrl;
-    [Range(2f, 10f)]
+    public GameObject Ventanapuntaje;
+    [Range(2f, 20f)]
     public float velocidadMovimiento = 2f;
     private Rigidbody2D rb2D;
 
@@ -13,7 +14,16 @@ public class CtrlBasurero : MonoBehaviour {
         rb2D = GetComponent<Rigidbody2D>();  
     }
     private void FixedUpdate () {
-        rb2D.velocity = new Vector2(Input.GetAxis("Horizontal") * velocidadMovimiento, Input.GetAxis("Vertical") * velocidadMovimiento);
+        if (Ventanapuntaje.activeSelf == false){
+            //rb2D.velocity = new Vector2(Input.GetAxis("Horizontal") * velocidadMovimiento, Input.GetAxis("Vertical") * velocidadMovimiento);
+            rb2D.velocity = new Vector2(Input.acceleration.x * velocidadMovimiento, Input.acceleration.y * velocidadMovimiento);
+        }
+        else{
+            rb2D.velocity = new Vector2(0,0);
+        }
+
+        
+
     }
 
     void OnTriggerEnter2D(Collider2D other){
