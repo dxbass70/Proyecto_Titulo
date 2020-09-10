@@ -5,7 +5,6 @@ using UnityEngine;
 public class CtrlGeneradorBasura : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    private string direccion = "izquierda";
     public float velocity = 2f;
     public GameObject BasuraPrefab;
     public float timerGenerador = 1.75f;
