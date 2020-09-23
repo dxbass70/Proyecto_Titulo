@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CtrlEdificio;
+
 
 public class CtrlBotonSeleccionedificio : MonoBehaviour
 {
     public GameObject VentanaSelf;
     public GameObject VentanaInfo;
-    public CtrlEdificio prefab;
+    //public CtrlEdificio prefab;
+    public string NombreEdificio;
+    public string InfoEdificio;
+    public int AguaEdificio;
+    public int ElectEdificio;
+    public int CosteEdificio;
+    public int NumEdif;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +28,15 @@ public class CtrlBotonSeleccionedificio : MonoBehaviour
 
     public void IrInfo(){
         List<string> datos = new List<string>();
-        datos[0] = prefab.Nombre.ToString();
-        datos[1] = prefab.informacion.ToString();
-        datos[2] = prefab.AguaHora.ToString();
-        datos[3] = prefab.ElectricidadHora.ToString();
-        datos[4] = prefab.Coste.ToString();
+        Debug.Log("lista creada insertando datos");
+        datos.Add(NombreEdificio);
+        datos.Add(InfoEdificio);
+        datos.Add(AguaEdificio.ToString());
+        datos.Add(ElectEdificio.ToString());
+        datos.Add(CosteEdificio.ToString());
+        datos.Add(NumEdif.ToString());
         VentanaSelf.SetActive(false);
         VentanaInfo.SetActive(true);
-        VentanaInfo.SendMessage("DatosEdificio",prefab);
+        VentanaInfo.SendMessage("DatosEdificio",datos);
     }
 }

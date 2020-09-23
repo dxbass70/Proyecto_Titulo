@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Actividad1.unity
     guid: be04226a212bb264c9932c536c5f5e96
+  - enabled: 1
+    path: Assets/Scenes/Actividad2.unity
+    guid: 70b81cf0df648e441aafefcf45b5770f
   m_configObjects: {}

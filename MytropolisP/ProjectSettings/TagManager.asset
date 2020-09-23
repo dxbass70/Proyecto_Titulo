@@ -9,6 +9,7 @@ TagManager:
   - Basura
   - Muro
   - MuroDestructor
+  - Objetivo
   layers:
   - Default
   - TransparentFX

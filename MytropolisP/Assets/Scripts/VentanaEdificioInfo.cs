@@ -11,11 +11,14 @@ public class VentanaEdificioInfo : MonoBehaviour
     public Text AguaEdificio;
     public Text ElectEdificio;
     public Text MonedasEdificio;
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] Edificio;
+    private int pos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = SpriteEdificio.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = Edificio[pos];
     }
 
     // Update is called once per frame
@@ -25,10 +28,12 @@ public class VentanaEdificioInfo : MonoBehaviour
     }
 
     void DatosEdificio(List<string> datos){
-        TituloEdificio.text = prefab.Nombre.ToString();
-        InfoEdificio.text = prefab.informacion.ToString();
-        AguaEdificio.text = prefab.AguaHora.ToString();
-        ElectEdificio.text = prefab.ElectricidadHora.ToString();
-        MonedasEdificio.text = prefab.Coste.ToString();
+        TituloEdificio.text = datos[0];
+        InfoEdificio.text = datos[1];
+        AguaEdificio.text = datos[2];
+        ElectEdificio.text = datos[3];
+        MonedasEdificio.text = datos[4];
+        pos = System.Convert.ToInt32(datos[5]);
+        Start();
     }
 }
