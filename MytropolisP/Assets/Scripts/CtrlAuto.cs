@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CtrlAuto : MonoBehaviour
@@ -10,7 +12,8 @@ public class CtrlAuto : MonoBehaviour
     [Range(2f, 20f)]
     public float velocidadMovimiento = 2f;
     private Rigidbody2D rb2D;
-    public int puntaje = 100;
+    private int puntaje;
+    public Text TextMesh;
 
 
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class CtrlAuto : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Objetivo"){ //Al chocar con un objeto de tag basura, la basura se destruye
             Debug.Log("Saliste! eres un mago");
+            puntaje = 10*(Convert.ToInt32(TextMesh.text));
             ActivityCtrl.SendMessage("FinPartida",puntaje);
         }
     }
