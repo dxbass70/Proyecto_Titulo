@@ -490,6 +490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VC: {fileID: 0}
+  Ventana2: {fileID: 0}
+  Ventana3: {fileID: 0}
+  Ventana4: {fileID: 0}
 --- !u!114 &92630865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6308,6 +6311,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VC: {fileID: 151407500}
+  Ventana2: {fileID: 1069014851}
+  Ventana3: {fileID: 1186887502}
+  Ventana4: {fileID: 335537090}
 --- !u!114 &1045084163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6952,7 +6958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1186887503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7090,6 +7096,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VC: {fileID: 335537090}
+  Ventana2: {fileID: 151407500}
+  Ventana3: {fileID: 1069014851}
+  Ventana4: {fileID: 1186887502}
 --- !u!114 &1191648118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9713,6 +9722,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VC: {fileID: 1186887502}
+  Ventana2: {fileID: 151407500}
+  Ventana3: {fileID: 1069014851}
+  Ventana4: {fileID: 335537090}
 --- !u!114 &1939913538
 MonoBehaviour:
   m_ObjectHideFlags: 0

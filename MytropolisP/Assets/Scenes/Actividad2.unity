@@ -315,7 +315,7 @@ MonoBehaviour:
   ActivityCtrl: {fileID: 490447161}
   Ventanapuntaje: {fileID: 573656551}
   velocidadMovimiento: 12
-  TextMesh: {fileID: 0}
+  TextMesh: {fileID: 1173627764}
 --- !u!61 &175670249
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Actividad1
+          m_StringArgument: Actividad2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &285122706
