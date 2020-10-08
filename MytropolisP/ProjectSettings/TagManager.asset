@@ -10,6 +10,7 @@ TagManager:
   - Muro
   - MuroDestructor
   - Objetivo
+  - Boton
   layers:
   - Default
   - TransparentFX

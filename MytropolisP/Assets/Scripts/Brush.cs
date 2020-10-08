@@ -19,4 +19,11 @@ public class Brush : MonoBehaviour
         gameObject.transform.position = mousePos;
         spriteRenderer.enabled = Input.GetMouseButton(0);
     }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.tag == "Boton" && Input.GetMouseButton(0)){ //Al chocar con un objeto de tag boton, la basura se destruye
+            Debug.Log("Cambiaste de escena");
+            other.gameObject.SendMessage("TransicionEscena","Actividad4Menu");
+        }
+    }
 }
