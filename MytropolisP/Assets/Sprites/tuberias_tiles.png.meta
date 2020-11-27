@@ -1,0 +1,434 @@
+fileFormatVersion: 2
+guid: 2037c436d6ddaf148ab592afbeb83029
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -390818283852375015
+    second: tuberias_tiles_0
+  - first:
+      213: -5789879114257933553
+    second: tuberias_tiles_1
+  - first:
+      213: -3343931616500284890
+    second: tuberias_tiles_2
+  - first:
+      213: 2666671671328008191
+    second: tuberias_tiles_3
+  - first:
+      213: 4881223680797363113
+    second: tuberias_tiles_4
+  - first:
+      213: 6126915439565098760
+    second: tuberias_tiles_5
+  - first:
+      213: 2088355901454013566
+    second: tuberias_tiles_6
+  - first:
+      213: -2881630179246116006
+    second: tuberias_tiles_7
+  - first:
+      213: -6570073648662220204
+    second: tuberias_tiles_8
+  - first:
+      213: -7071165020346365188
+    second: tuberias_tiles_9
+  - first:
+      213: 5853501663726712568
+    second: tuberias_tiles_10
+  - first:
+      213: -5492599288070367983
+    second: tuberias_tiles_11
+  - first:
+      213: 8427696977597948142
+    second: tuberias_tiles_12
+  - first:
+      213: -8587942527692869034
+    second: tuberias_tiles_13
+  - first:
+      213: -6320517043903293033
+    second: tuberias_tiles_14
+  - first:
+      213: -4920229458064214463
+    second: tuberias_tiles_15
+  - first:
+      213: -1940739270668954357
+    second: tuberias_tiles_16
+  - first:
+      213: 7179902032969674024
+    second: tuberias_tiles_17
+  - first:
+      213: -7833414909328434523
+    second: tuberias_tiles_18
+  - first:
+      213: -7982226023479997388
+    second: tuberias_tiles_19
+  - first:
+      213: 6663166032982192235
+    second: tuberias_tiles_20
+  - first:
+      213: 5114618623276621474
+    second: tuberias_tiles_21
+  - first:
+      213: 7667090903308823824
+    second: tuberias_tiles_22
+  - first:
+      213: -4510515204466089524
+    second: tuberias_tiles_23
+  - first:
+      213: 5817222069192793664
+    second: tuberias_tiles_24
+  - first:
+      213: -6468497882655013537
+    second: tuberias_tiles_25
+  - first:
+      213: 4392289812880152518
+    second: tuberias_tiles_26
+  - first:
+      213: -6221021293159961767
+    second: tuberias_tiles_27
+  - first:
+      213: -1342089595456792218
+    second: tuberias_tiles_28
+  - first:
+      213: 8753847058689365873
+    second: tuberias_tiles_29
+  - first:
+      213: -8835329873206731092
+    second: tuberias_tiles_30
+  - first:
+      213: 788068317762894867
+    second: tuberias_tiles_31
+  - first:
+      213: 7436272174022723201
+    second: tuberias_tiles_32
+  - first:
+      213: -2880727375868750400
+    second: tuberias_tiles_33
+  - first:
+      213: -8677051650038939744
+    second: tuberias_tiles_34
+  - first:
+      213: -9171142958962669337
+    second: tuberias_tiles_35
+  - first:
+      213: -8414569301344091405
+    second: tuberias_tiles_36
+  - first:
+      213: 2812035282378247592
+    second: tuberias_tiles_37
+  - first:
+      213: -555579912326010611
+    second: tuberias_tiles_38
+  - first:
+      213: -3798672498637997119
+    second: tuberias_tiles_39
+  - first:
+      213: 1860229355099794166
+    second: tuberias_tiles_40
+  - first:
+      213: 4103199833118307097
+    second: tuberias_tiles_41
+  - first:
+      213: 2026325442094440682
+    second: tuberias_tiles_42
+  - first:
+      213: 8265231614039379524
+    second: tuberias_tiles_43
+  - first:
+      213: 4586862569644978922
+    second: tuberias_tiles_44
+  - first:
+      213: -2779834625609879446
+    second: tuberias_tiles_45
+  - first:
+      213: -8933123763870362149
+    second: tuberias_tiles_46
+  - first:
+      213: -3755513477502744941
+    second: tuberias_tiles_47
+  - first:
+      213: 8378945760129235237
+    second: tuberias_tiles_48
+  - first:
+      213: 8856103750035921750
+    second: tuberias_tiles_49
+  - first:
+      213: -1922669766737678354
+    second: tuberias_tiles_50
+  - first:
+      213: 1214993088622177431
+    second: tuberias_tiles_51
+  - first:
+      213: -8655164656848495984
+    second: tuberias_tiles_52
+  - first:
+      213: 3285884601915382176
+    second: tuberias_tiles_53
+  - first:
+      213: 1104867599064962303
+    second: tuberias_tiles_54
+  - first:
+      213: -5039856473760298792
+    second: tuberias_tiles_55
+  - first:
+      213: 1287907905911534887
+    second: tuberias_tiles_56
+  - first:
+      213: -908962573191420942
+    second: tuberias_tiles_57
+  - first:
+      213: -1824262343643320486
+    second: tuberias_tiles_58
+  - first:
+      213: 3592030644663389867
+    second: tuberias_tiles_59
+  - first:
+      213: -1321282703345141861
+    second: tuberias_tiles_60
+  - first:
+      213: 1553855003408557561
+    second: tuberias_tiles_61
+  - first:
+      213: -7733006067410098881
+    second: tuberias_tiles_62
+  - first:
+      213: 2460616470525416505
+    second: tuberias_tiles_63
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tuberias_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 98
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c504b67d8839af0800000000000000
+      internalID: -390818283852375015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tuberias_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 98
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0bd3362f9736afa0800000000000000
+      internalID: -5789879114257933553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tuberias_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 98
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6228d4569e7f791d0800000000000000
+      internalID: -3343931616500284890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tuberias_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff76a16a1cbe10520800000000000000
+      internalID: 2666671671328008191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tuberias_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 96
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9abc62b63179db340800000000000000
+      internalID: 4881223680797363113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tuberias_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 98
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f4228612d270550800000000000000
+      internalID: 6126915439565098760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
