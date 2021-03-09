@@ -28,6 +28,7 @@ public class CtrlBasurero : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Basura"){ //Al chocar con un objeto de tag basura, la basura se destruye
+            CtrlSonidoA1.PlaySound ();
             Destroy(other.gameObject);
             ActivityCtrl.SendMessage("IncrementarPuntos");
             Debug.Log("Basura destruida, +1 punto");

@@ -25,4 +25,16 @@ public class CtrlRecursos : MonoBehaviour
         TextElect.text=CountElect.ToString();
         TextAgua.text=CountAgua.ToString();
     }
+
+    void SumarMonedas(int monto){
+        CountMonedas+=monto;
+    }
+
+    void SumarElect(int monto){
+        CountElect+=monto;
+    }
+
+    void SumarAgua(int monto){
+        CountAgua+=monto;
+    }
 }

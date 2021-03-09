@@ -6,7 +6,7 @@ public class CtrlGeneradorBasura : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     public float velocity = 2f;
-    public GameObject BasuraPrefab;
+    public GameObject[] BasuraPrefab;
     public float timerGenerador = 1.75f;
     public float positionx = 0;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class CtrlGeneradorBasura : MonoBehaviour
     }
     
     void CreateBasura(){
-        Instantiate(BasuraPrefab, new Vector3(positionx, 6.45f, -3.5703f), Quaternion.identity);
+        Instantiate(BasuraPrefab[Random.Range(0,3)], new Vector3(positionx, 6.45f, -3.5703f), Quaternion.identity);
     }
 
 

@@ -5,6 +5,8 @@ using System.IO;
 
 public class ExportPNG : MonoBehaviour
 {
+    public GameObject SonidoGuardado;
+
     public void SaveAsPNG(Texture2D texture)
     {
         string Nombre = System.DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -16,5 +18,6 @@ public class ExportPNG : MonoBehaviour
             }
         File.WriteAllBytes(dirPath + Nombre + ".png", bytes);
         Debug.Log(dirPath + Nombre + ".png");
+        SonidoGuardado.GetComponent<AudioSource>().Play();
         }
 }

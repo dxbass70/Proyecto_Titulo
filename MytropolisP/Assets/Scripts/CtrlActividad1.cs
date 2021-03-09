@@ -10,6 +10,8 @@ public class CtrlActividad1 : MonoBehaviour
     private int Vidas = 3;
     public GameObject GeneradorBasura;
     public GameObject Ventanapuntaje;
+    public GameObject SonidoDerrota;
+    public GameObject MusicaFondo;
     public Text TextPuntaje;
     public Text PuntajeJuego;
     public Text Textmonedas;
@@ -25,6 +27,8 @@ public class CtrlActividad1 : MonoBehaviour
     {
         if(Vidas==0){
             Debug.Log("Fin de la partida");
+            MusicaFondo.GetComponent<AudioSource>().Stop();
+            SonidoDerrota.GetComponent<AudioSource>().Play();
             Destroy(GeneradorBasura);
             if (Ventanapuntaje.activeSelf == false){
             Ventanapuntaje.SetActive(true); // activa la ventana puntaje

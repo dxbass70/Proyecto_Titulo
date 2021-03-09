@@ -11,9 +11,14 @@ namespace MadFireOn
         private PipeScript[] pipeObj;
         //ref to level complete status
         public bool levelComplete = false;
+        public bool done = false;
         //ref to which level is on
         private int levelInd;
         public GameObject Ventanapuntaje;
+        public GameObject SonidoDerrota;
+        public GameObject SonidoVictoria;
+        public GameObject MusicaFondo;
+        public Text TextVictoria;
         public Text TextPuntaje;
         public Text Textelectricidad;
         private int Puntaje = 0;
@@ -29,6 +34,7 @@ namespace MadFireOn
         {
             //at start we want levelComplete false
             levelComplete = false;
+            done = false;
         }
 
         // Use this for initialization
@@ -53,7 +59,12 @@ namespace MadFireOn
             //if level is complete
             if (levelComplete)
             {
-                FinPartida(timeLeft);
+                if(done){ 
+                }
+                else{
+                    FinPartida(timeLeft);
+                    done = true;
+                }
                 //se muestra la ventana de ganaste
             }
 
@@ -85,6 +96,16 @@ namespace MadFireOn
         public void FinPartida(int Incremento){
             Puntaje += Incremento;
             Debug.Log("Fin de la partida");
+            if(Incremento == 0){
+                TextVictoria.text = "Intentalo otra vez";
+                MusicaFondo.GetComponent<AudioSource>().Stop();
+                SonidoDerrota.GetComponent<AudioSource>().Play();
+            }
+            else{
+                TextVictoria.text = "Ganaste";
+                MusicaFondo.GetComponent<AudioSource>().Stop();
+                SonidoVictoria.GetComponent<AudioSource>().Play();
+            }
             if (Ventanapuntaje.activeSelf == false){
                 Ventanapuntaje.SetActive(true); // activa la ventana puntaje
                 TextPuntaje.text = "Puntaje: " + Puntaje.ToString();
@@ -96,11 +117,11 @@ namespace MadFireOn
         void Tiempo(){
             if(timeLeft == 0){
                 FinPartida(0);
+                endTime-=1;
                 }
-            if (timeLeft < 0){
-                timeLeft = 0;
+            if (timeLeft >= 0){
+                TextTimer.text = timeLeft.ToString();
             }
-            TextTimer.text = timeLeft.ToString();
         }
     }
 

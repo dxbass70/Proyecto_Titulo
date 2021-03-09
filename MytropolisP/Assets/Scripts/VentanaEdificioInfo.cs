@@ -12,13 +12,15 @@ public class VentanaEdificioInfo : MonoBehaviour
     public Text ElectEdificio;
     public Text MonedasEdificio;
     private SpriteRenderer spriteRenderer;
-    public Sprite[] Edificio;
-    private int pos;
+    private GameObject Edificio;
+    public GameObject[] Edificios;
+    public int pos;
     // Start is called before the first frame update
     void Start()
     {
+        Edificio = Edificios[pos];
         spriteRenderer = SpriteEdificio.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Edificio[pos];
+        spriteRenderer.sprite = Edificio.GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame

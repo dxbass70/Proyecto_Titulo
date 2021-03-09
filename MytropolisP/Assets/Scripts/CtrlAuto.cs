@@ -32,7 +32,7 @@ public class CtrlAuto : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Objetivo"){ //Al chocar con un objeto de tag basura, la basura se destruye
-            Debug.Log("Saliste! eres un mago");
+            Debug.Log("llegaste! Bien hecho");
             puntaje = (Convert.ToInt32(TextMesh.text));
             ActivityCtrl.SendMessage("FinPartida",puntaje);
         }

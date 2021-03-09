@@ -7,9 +7,26 @@ public class Construir : MonoBehaviour
 {
     public GameObject Ventana;
     public GameObject CtrlGeneradorEdificio;
+    public GameObject CtrlRecursos;
+    private int coste;
+    private int monedas;
+    private int resta;
 
     public void construiredificio(){
-        CtrlGeneradorEdificio.SendMessage("invokeEdifico");
-        Ventana.SetActive(false);
+        coste = System.Convert.ToInt32(Ventana.GetComponent<VentanaEdificioInfo>().MonedasEdificio.text);
+        monedas = CtrlRecursos.GetComponent<CtrlRecursos>().CountMonedas;
+        if (coste <= monedas){
+            Debug.Log(coste.ToString());
+            resta = 0 - coste;
+            CtrlRecursos.SendMessage("SumarMonedas",resta);
+            //Actualizar monto en Base de datos
+            CtrlGeneradorEdificio.SendMessage("invokeEdifico",Ventana.GetComponent<VentanaEdificioInfo>().pos);
+            Ventana.SetActive(false);
+        }
+        else{
+            //mensaje con voz
+            Debug.Log("No tienes las monedas necesarias");
+        }
+        
     }
 }
