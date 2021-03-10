@@ -6,10 +6,13 @@ public class CtrlGeneradorEdificios : MonoBehaviour
 {
     public Camera cam;
     public GameObject[] EdificioPrefab;
+    public GameObject CtrlRecursos;
     private Vector3 point;
     public bool Construir = false;
     private bool libre = true;
     private int pos;
+    public int coste;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +29,13 @@ public class CtrlGeneradorEdificios : MonoBehaviour
                 mousePos = Input.mousePosition;
                 point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 105.0f));
                 Invoke("CreateEdificio", 0);
-                //prefab.GetComponent<CtrlEdificio>().Constructor = gameObject;
-                Construir = false;
+                
+                //Luego de Confirmar la construccion se hace el cobro del edificio
+                Debug.Log(coste.ToString()); 
+                int resta = 0 - coste;
+                CtrlRecursos.SendMessage("SumarMonedas",resta); //resta el coste del edificio
+                CtrlRecursos.SendMessage("SavePlayer"); //Cuando el edificio esta construido, Guarda los datos
+                Construir = false;  //Se bloquea el modo de construccion
             }            
             
         }

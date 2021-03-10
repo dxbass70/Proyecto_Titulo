@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.UI;
 
 public class ShowGameObject : MonoBehaviour
@@ -32,5 +31,4 @@ public class ShowGameObject : MonoBehaviour
             Debug.Log(" else Desactivada ventana" + VC.name);
         }
     }
-
 }

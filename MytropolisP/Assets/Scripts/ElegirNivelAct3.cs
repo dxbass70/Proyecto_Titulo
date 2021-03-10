@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class ElegirNivelAct3 : MonoBehaviour
 {
+    public GameObject LevelLoader;
     private int Nivel;
     private string Escena;
     private void TransicionEscena(string NombreEscena)
     {
-        SceneManager.LoadScene(NombreEscena);
-        Debug.Log("Ingresando a nivel " + Nivel.ToString());
+        LevelLoader.SendMessage("LoadLevel", NombreEscena);
     }
 
     public void AccesoNivel(){

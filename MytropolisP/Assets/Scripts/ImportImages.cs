@@ -38,14 +38,11 @@ public class ImportImages : MonoBehaviour
         var dirPath = Application.dataPath + "/Dibujos/";
         DirectoryInfo dir = new DirectoryInfo(dirPath);
         FileInfo[] info = dir.GetFiles("*.png");
-        Debug.Log("Importando archivos");
         //ajustar el tamaño del canvas para que quepan los dibujos
         foreach (FileInfo f in info){
             GetComponent<RectTransform>().sizeDelta += new Vector2(Tamaño.x, 0);
         }
         foreach (FileInfo f in info){
-        
-            Debug.Log(f.ToString());
             //creamos el sprite en base al png
             Texture2D SpriteTexture = LoadTexture(f.ToString());
             NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height),new Vector2(0,0), 100.0f);
@@ -56,7 +53,6 @@ public class ImportImages : MonoBehaviour
             Imagen.GetComponent<ZoomImagen>().Image = Image;
             Posicion.x += Distancia; //posicion del siguiente dibujo
         }
-        Debug.Log("archivos importados");
 
     }
     public Texture2D LoadTexture(string FilePath) {

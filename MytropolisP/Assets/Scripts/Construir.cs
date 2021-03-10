@@ -17,8 +17,8 @@ public class Construir : MonoBehaviour
         monedas = CtrlRecursos.GetComponent<CtrlRecursos>().CountMonedas;
         if (coste <= monedas){
             Debug.Log(coste.ToString());
-            resta = 0 - coste;
-            CtrlRecursos.SendMessage("SumarMonedas",resta);
+            CtrlGeneradorEdificio.GetComponent<CtrlGeneradorEdificios>().coste = coste;
+            
             //Actualizar monto en Base de datos
             CtrlGeneradorEdificio.SendMessage("invokeEdifico",Ventana.GetComponent<VentanaEdificioInfo>().pos);
             Ventana.SetActive(false);

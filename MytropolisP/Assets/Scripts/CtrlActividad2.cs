@@ -7,6 +7,7 @@ public class CtrlActividad2 : MonoBehaviour
 {
     private int Puntaje = 0;
     private int Electricidad = 0;
+    private GameObject CtrlRecursos;
     public GameObject Ventanapuntaje;
     public GameObject SonidoDerrota;
     public GameObject SonidoVictoria;
@@ -19,6 +20,7 @@ public class CtrlActividad2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CtrlRecursos = GameObject.Find("CtrlRecursos");  
         endTime = Time.time + 30;
         TextMesh.text = "30";
     }
@@ -31,12 +33,13 @@ public class CtrlActividad2 : MonoBehaviour
             FinPartida(0);
             endTime-=1; //evita que se repita la condicion mas de una vez
         }
-        if (timeLeft >= 0) TextMesh.text = timeLeft.ToString();
+        if (timeLeft >= 0){
+            TextMesh.text = timeLeft.ToString();
+        }
     }
 
     public int FinPartida(int Incremento){
         Puntaje += Incremento;
-        Debug.Log("Fin de la partida");
         if(Incremento == 0){
             TextVictoria.text = "Intentalo otra vez";
             MusicaFondo.GetComponent<AudioSource>().Stop();
@@ -52,6 +55,10 @@ public class CtrlActividad2 : MonoBehaviour
         TextPuntaje.text = "Puntaje: " + Puntaje.ToString();
         Electricidad = Puntaje*10;
         Textelectricidad.text = Electricidad.ToString();
+        Debug.Log(Electricidad.ToString());
+        //Se Guardan las monedas ganadas
+        CtrlRecursos.SendMessage("SumarElect",Electricidad); //Se suma la Electricidad ganada
+        CtrlRecursos.SendMessage("SavePlayer"); //Guarda los datos
         return Electricidad;
         }
         return 0;

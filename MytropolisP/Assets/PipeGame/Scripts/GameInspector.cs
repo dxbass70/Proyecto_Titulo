@@ -14,6 +14,7 @@ namespace MadFireOn
         public bool done = false;
         //ref to which level is on
         private int levelInd;
+        private GameObject CtrlRecursos;
         public GameObject Ventanapuntaje;
         public GameObject SonidoDerrota;
         public GameObject SonidoVictoria;
@@ -40,6 +41,7 @@ namespace MadFireOn
         // Use this for initialization
         void Start()
         {
+            CtrlRecursos = GameObject.Find("CtrlRecursos"); 
             //get all the pipeObj and are stored in array
             pipeObj = FindObjectsOfType<PipeScript>();
 
@@ -82,20 +84,16 @@ namespace MadFireOn
             {
                 if (pipeObj[i].completed == false)
                 {
-                    Debug.Log("aun no");
-                    Debug.Log(i);
                     levelComplete = false;
                     return;
                 }
                 
             }
-            Debug.Log("Ahora si");
             levelComplete = true;
         }
 
         public void FinPartida(int Incremento){
             Puntaje += Incremento;
-            Debug.Log("Fin de la partida");
             if(Incremento == 0){
                 TextVictoria.text = "Intentalo otra vez";
                 MusicaFondo.GetComponent<AudioSource>().Stop();
@@ -111,6 +109,10 @@ namespace MadFireOn
                 TextPuntaje.text = "Puntaje: " + Puntaje.ToString();
                 Agua = Puntaje*10;
                 Textelectricidad.text = Agua.ToString();
+                //Se Guardan las monedas ganadas
+                Debug.Log(Agua.ToString());
+                CtrlRecursos.SendMessage("SumarAgua",Agua); //Se suma la Electricidad ganada
+                CtrlRecursos.SendMessage("SavePlayer"); //Guarda los datos
             }
         }
 
