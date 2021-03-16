@@ -22,8 +22,7 @@ public class CtrlAuto : MonoBehaviour
     }
     private void FixedUpdate () {
         if (Ventanapuntaje.activeSelf == false){
-            //rb2D.velocity = new Vector2(Input.GetAxis("Horizontal") * velocidadMovimiento, Input.GetAxis("Vertical") * velocidadMovimiento);
-            rb2D.velocity = new Vector2(Input.acceleration.x * velocidadMovimiento, Input.acceleration.y * velocidadMovimiento);
+            mover();
         }
         else{
             rb2D.velocity = new Vector2(0,0);
@@ -32,9 +31,46 @@ public class CtrlAuto : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Objetivo"){ //Al chocar con un objeto de tag basura, la basura se destruye
-            Debug.Log("llegaste! Bien hecho");
             puntaje = (Convert.ToInt32(TextMesh.text));
             ActivityCtrl.SendMessage("FinPartida",puntaje);
         }
+    }
+
+    void mover(){
+        if(Input.acceleration.x > 0){
+            if(Input.acceleration.y > 0){
+                if(Input.acceleration.x >= Input.acceleration.y){
+                    transform.localEulerAngles = new Vector3 (0,0,0);
+                }else{
+                    transform.localEulerAngles = new Vector3 (0,0,90);
+                }
+            }
+            else if(Input.acceleration.y < 0){
+                if(Input.acceleration.x >= (Input.acceleration.y * -1)){
+                    transform.localEulerAngles  = new Vector3 (0,0,0);
+                }else{
+                    transform.localEulerAngles = new Vector3 (0,0,270);
+                }
+            }
+        }
+        else if(Input.acceleration.x < 0){
+            if(Input.acceleration.y > 0){
+                if(Input.acceleration.x >= (Input.acceleration.y * -1)){
+                    transform.localEulerAngles = new Vector3 (0,0,180);
+                }else if(Input.acceleration.x < Input.acceleration.y){
+                    transform.localEulerAngles = new Vector3 (0,0,90);
+                }
+            }
+            else{
+                if(Input.acceleration.x >= Input.acceleration.y){
+                    transform.localEulerAngles = new Vector3 (0,0,180);
+                }else{
+                    transform.localEulerAngles = new Vector3 (0,0,270);
+                }
+            }
+        }
+
+        
+        rb2D.velocity = new Vector2(Input.acceleration.x * velocidadMovimiento, Input.acceleration.y * velocidadMovimiento);
     }
 }

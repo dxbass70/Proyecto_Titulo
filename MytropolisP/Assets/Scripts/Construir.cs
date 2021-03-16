@@ -16,7 +16,7 @@ public class Construir : MonoBehaviour
         coste = System.Convert.ToInt32(Ventana.GetComponent<VentanaEdificioInfo>().MonedasEdificio.text);
         monedas = CtrlRecursos.GetComponent<CtrlRecursos>().CountMonedas;
         if (coste <= monedas){
-            Debug.Log(coste.ToString());
+            //Debug.Log(coste.ToString());
             CtrlGeneradorEdificio.GetComponent<CtrlGeneradorEdificios>().coste = coste;
             
             //Actualizar monto en Base de datos
@@ -25,7 +25,7 @@ public class Construir : MonoBehaviour
         }
         else{
             //mensaje con voz
-            Debug.Log("No tienes las monedas necesarias");
+            //Debug.Log("No tienes las monedas necesarias");
         }
         
     }

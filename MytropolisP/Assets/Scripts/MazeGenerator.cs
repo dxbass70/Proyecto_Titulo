@@ -174,8 +174,6 @@ public class MazeGenerator : MonoBehaviour {
         if (newCell.gridPos.x == 0) EdificioSalida(newCell.cScript, 1);
         else if (newCell.gridPos.x == mazeColumns) EdificioSalida(newCell.cScript, 2);
         else if (newCell.gridPos.y == mazeRows) EdificioSalida(newCell.cScript, 3);
-
-        Debug.Log("Maze generation finished.");
     }
 
     public List<Cell> GetUnvisitedNeighbours(Cell curCell)

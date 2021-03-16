@@ -8,6 +8,45 @@ TextureImporter:
   - first:
       213: 4821438648862124076
     second: laberintosprite_1
+  - first:
+      213: -26708172250891797
+    second: laberintosprite_2
+  - first:
+      213: 276049846050087908
+    second: laberintosprite_3
+  - first:
+      213: 842534596524984240
+    second: laberintosprite_4
+  - first:
+      213: -6560365999677120776
+    second: laberintosprite_5
+  - first:
+      213: 912427004447484654
+    second: laberintosprite_6
+  - first:
+      213: 4945013629341026151
+    second: laberintosprite_7
+  - first:
+      213: -5417524027009176257
+    second: laberintosprite_8
+  - first:
+      213: 5444459180302779277
+    second: laberintosprite_9
+  - first:
+      213: 6696321326802277016
+    second: laberintosprite_10
+  - first:
+      213: -4456017602380468876
+    second: laberintosprite_11
+  - first:
+      213: 2667101526639963552
+    second: laberintosprite_12
+  - first:
+      213: -2382260825847925449
+    second: laberintosprite_13
+  - first:
+      213: 1805409232280489924
+    second: laberintosprite_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -42,7 +81,7 @@ TextureImporter:
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -51,7 +90,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 133
+  spritePixelsToUnits: 131
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +147,12 @@ TextureImporter:
       name: laberintosprite_0
       rect:
         serializedVersion: 2
-        x: 386
-        y: 483
-        width: 133
-        height: 133
+        x: 387
+        y: 484
+        width: 131
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +168,12 @@ TextureImporter:
       name: laberintosprite_1
       rect:
         serializedVersion: 2
-        x: 583
+        x: 584
         y: 610
-        width: 133
+        width: 131
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,10 +185,283 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: laberintosprite_2
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 285
+        width: 131
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9b2601f0d11aff0800000000000000
+      internalID: -26708172250891797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 285
+        width: 131
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3ed165fd9b4d300800000000000000
+      internalID: 276049846050087908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_4
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 280
+        width: 131
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b749d860c841bb00800000000000000
+      internalID: 842534596524984240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_5
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 281
+        width: 133
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fed1b0b1e5e4f4a0800000000000000
+      internalID: -6560365999677120776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_6
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 283
+        width: 129
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeae09bb68799ac00800000000000000
+      internalID: 912427004447484654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_7
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 289
+        width: 131
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 767465232b730a440800000000000000
+      internalID: 4945013629341026151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_8
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 289
+        width: 130
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d69f7c99611d4b0800000000000000
+      internalID: -5417524027009176257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_9
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 100
+        width: 130
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83cf0c47ca9e8b40800000000000000
+      internalID: 5444459180302779277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_10
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 99
+        width: 127
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8921ce1a4cc1eec50800000000000000
+      internalID: 6696321326802277016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_11
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 98
+        width: 133
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d6931899b0922c0800000000000000
+      internalID: -4456017602380468876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_12
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 100
+        width: 131
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ade64325b2730520800000000000000
+      internalID: 2667101526639963552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_13
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 97
+        width: 133
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7357101966280fed0800000000000000
+      internalID: -2382260825847925449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: laberintosprite_14
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 92
+        width: 131
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf0a4c912a1e0910800000000000000
+      internalID: 1805409232280489924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 4422a26693be7ad4ba375cd161ac5caf
     internalID: 0
     vertices: []
     indices: 

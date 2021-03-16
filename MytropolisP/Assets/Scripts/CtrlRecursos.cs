@@ -22,9 +22,12 @@ public class CtrlRecursos : MonoBehaviour
     void Update()
     {
         if(TextMonedas != null && TextElect != null && TextAgua != null)  //En caso de que se vean los textos existan en la escena los actualiza
-        TextMonedas.text=CountMonedas.ToString();
-        TextElect.text=CountElect.ToString();
-        TextAgua.text=CountAgua.ToString();
+        {
+            TextMonedas.text=CountMonedas.ToString();
+            TextElect.text=CountElect.ToString();
+            TextAgua.text=CountAgua.ToString();
+        }
+        
     }
 
     void SumarMonedas(int monto){

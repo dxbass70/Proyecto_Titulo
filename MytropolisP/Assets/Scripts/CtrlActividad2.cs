@@ -21,19 +21,19 @@ public class CtrlActividad2 : MonoBehaviour
     void Start()
     {
         CtrlRecursos = GameObject.Find("CtrlRecursos");  
-        endTime = Time.time + 30;
-        TextMesh.text = "30";
+        endTime = Time.time + 60;
+        TextMesh.text = "60";
     }
 
     // Update is called once per frame
     void Update()
     {
         int timeLeft = (int)(endTime - Time.time);
-        if(timeLeft == 0.0f){
+        if(timeLeft == 0.0f && Ventanapuntaje.activeSelf == false){
             FinPartida(0);
             endTime-=1; //evita que se repita la condicion mas de una vez
         }
-        if (timeLeft >= 0){
+        if (timeLeft >= 0 && Ventanapuntaje.activeSelf == false){
             TextMesh.text = timeLeft.ToString();
         }
     }
@@ -55,7 +55,6 @@ public class CtrlActividad2 : MonoBehaviour
         TextPuntaje.text = "Puntaje: " + Puntaje.ToString();
         Electricidad = Puntaje*10;
         Textelectricidad.text = Electricidad.ToString();
-        Debug.Log(Electricidad.ToString());
         //Se Guardan las monedas ganadas
         CtrlRecursos.SendMessage("SumarElect",Electricidad); //Se suma la Electricidad ganada
         CtrlRecursos.SendMessage("SavePlayer"); //Guarda los datos

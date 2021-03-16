@@ -31,7 +31,6 @@ public class CtrlGeneradorEdificios : MonoBehaviour
                 Invoke("CreateEdificio", 0);
                 
                 //Luego de Confirmar la construccion se hace el cobro del edificio
-                Debug.Log(coste.ToString()); 
                 int resta = 0 - coste;
                 CtrlRecursos.SendMessage("SumarMonedas",resta); //resta el coste del edificio
                 CtrlRecursos.SendMessage("SavePlayer"); //Cuando el edificio esta construido, Guarda los datos
@@ -50,7 +49,7 @@ public class CtrlGeneradorEdificios : MonoBehaviour
         pos = posicion;
         Construir = true;
         //mensaje con voz
-        Debug.Log("Donde quieres colocar tu edificio");
+        //Debug.Log("Donde quieres colocar tu edificio");
     }
 
     public void ConfirmConstruccion(bool confirm){ //Controla si el edificio se pudo construir
@@ -59,7 +58,7 @@ public class CtrlGeneradorEdificios : MonoBehaviour
             libre = false;  //El terreno esta ocupado
             Construir = true;   //Se vuelve a construir
         }else{
-            Debug.Log("Se puede construir aqui");
+            //Debug.Log("Se puede construir aqui");
             libre = true;  //El terreno esta libre
             Construir = true;   //Se vuelve a construir
         }

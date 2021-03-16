@@ -28,7 +28,6 @@ public class CtrlBotonSeleccionedificio : MonoBehaviour
 
     public void IrInfo(){
         List<string> datos = new List<string>();
-        Debug.Log("lista creada insertando datos");
         datos.Add(Edificio.GetComponent<CtrlEdificio>().Nombre);
         datos.Add(Edificio.GetComponent<CtrlEdificio>().informacion);
         datos.Add(Edificio.GetComponent<CtrlEdificio>().AguaHora.ToString());
