@@ -2,6 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class EdificioData {
+    public int pos;
+    public Vector3 position;
+    public System.DateTime UltimoCobro;
+
+    public EdificioData (int pos, Vector3 position, System.DateTime UltimoCobro){
+        this.pos = pos;
+        this.position = position;
+        this.UltimoCobro = UltimoCobro;
+    }
+
+}
+
 public class CtrlGeneradorEdificios : MonoBehaviour
 {
     public Camera cam;
@@ -12,11 +26,13 @@ public class CtrlGeneradorEdificios : MonoBehaviour
     private bool libre = true;
     private int pos;
     public int coste;
+    private List<EdificioData> ListaEdificios = new List<EdificioData>();
     
 
     // Start is called before the first frame update
     void Start()
     {
+        LoadEdificios();
     }
 
     // Update is called once per frame
@@ -42,7 +58,11 @@ public class CtrlGeneradorEdificios : MonoBehaviour
     }
 
     void CreateEdificio(){
-        Instantiate(EdificioPrefab[pos], point, Quaternion.identity);
+        GameObject newEdificio = Instantiate(EdificioPrefab[pos], point, Quaternion.identity);
+        newEdificio.transform.parent = gameObject.transform;
+        EdificioData edificioData = new EdificioData(pos, newEdificio.transform.position, newEdificio.GetComponent<CtrlEdificio>().GetUltimoCobro());
+        ListaEdificios.Add(edificioData);
+        SystemSave.SaveEdificios (ListaEdificios);
     }
 
     public void invokeEdifico(int posicion){
@@ -63,5 +83,19 @@ public class CtrlGeneradorEdificios : MonoBehaviour
             Construir = true;   //Se vuelve a construir
         }
 
+    }
+
+    private void LoadEdificios(){
+        List<EdificioData> EdificiosTemp = SystemSave.LoadEdificios();
+
+        if(EdificiosTemp != null){
+            ListaEdificios = EdificiosTemp;
+            for (int i = 0; i < ListaEdificios.Count; i++)
+            {
+                GameObject newEdificio = Instantiate(EdificioPrefab[ListaEdificios[i].pos], ListaEdificios[i].position, Quaternion.identity);
+                newEdificio.GetComponent<CtrlEdificio>().SetUltimoCobro(ListaEdificios[i].UltimoCobro);
+                newEdificio.transform.parent = gameObject.transform;
+            }
+        }
     }
 }

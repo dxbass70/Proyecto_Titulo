@@ -10,6 +10,7 @@ public class CtrlEdificio : MonoBehaviour
     public int AguaHora;
     public int Coste;
     public string Nombre;
+    [TextArea]
     public string informacion;
     private GameObject Constructor;
     private GameObject Recursos;
@@ -48,7 +49,7 @@ public class CtrlEdificio : MonoBehaviour
         int RestaElec = 0 - (ElectricidadHora * HorasPasadas);
         int RestaAgua = 0 - (AguaHora * HorasPasadas);
         if(Recursos.GetComponent<CtrlRecursos>().CountElect < -RestaElec || Recursos.GetComponent<CtrlRecursos>().CountAgua < -RestaAgua){
-            Debug.Log ("No tienes dinero suficiente, Hoy no se come :'c");
+            //Debug.Log ("No tienes dinero suficiente, Hoy no se come :'c");
         }else{
             Recursos.SendMessage("SumarElect",RestaElec);
             Recursos.SendMessage("SumarAgua",RestaAgua);
@@ -56,7 +57,7 @@ public class CtrlEdificio : MonoBehaviour
             GetComponent<Renderer>().material.SetColor("_Color", Color.white);
             Cobrar = false;
             Recursos.SendMessage("SavePlayer"); //Se guarda luego de hacer el cobro
-            Debug.Log ("Cobro realizado");
+            //Debug.Log ("Cobro realizado");
         }
     }
 
@@ -67,10 +68,18 @@ public class CtrlEdificio : MonoBehaviour
             HorasPasadas = Mathf.RoundToInt((float)Horas);
             Cobrar = true;
             GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-            Debug.Log ("A cobrar!!!, pasaron: " + Horas);
+            //Debug.Log ("A cobrar!!!, pasaron: " + Horas);
         }
-        Debug.Log ("A cobrar!!!, pasaron: " + Horas);
-        Debug.Log ("en int, pasaron: " + HorasPasadas);
+        //Debug.Log ("A cobrar!!!, pasaron: " + Horas);
+        //Debug.Log ("en int, pasaron: " + HorasPasadas);
         //Debug.Log ("Han pasado " + Horas.ToString() + " horas Desde el ultimo cobro");
+    }
+
+    public System.DateTime GetUltimoCobro(){
+        return UltimoCobro;
+    }
+
+    public void SetUltimoCobro(System.DateTime ultimoCobro){
+        this.UltimoCobro = ultimoCobro;
     }
 }

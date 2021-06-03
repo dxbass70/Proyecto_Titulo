@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VentanaEdificioInfo : MonoBehaviour
 {
     public GameObject SpriteEdificio;
     public Text TituloEdificio;
-    public Text InfoEdificio;
+    public TMP_Text InfoEdificio;
     public Text AguaEdificio;
     public Text ElectEdificio;
     public Text MonedasEdificio;
@@ -32,6 +33,7 @@ public class VentanaEdificioInfo : MonoBehaviour
     void DatosEdificio(List<string> datos){
         TituloEdificio.text = datos[0];
         InfoEdificio.text = datos[1];
+        Debug.Log(datos[1]);
         AguaEdificio.text = datos[2];
         ElectEdificio.text = datos[3];
         MonedasEdificio.text = datos[4];

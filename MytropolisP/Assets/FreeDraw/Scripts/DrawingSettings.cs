@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace FreeDraw
 {
@@ -26,12 +27,23 @@ namespace FreeDraw
             SetMarkerWidth((int)new_width);
         }
 
+        public void SetMarkerWidth(Slider mySlider)
+        {
+            SetMarkerWidth((int)(mySlider.value));
+        }
+
         public void SetTransparency(float amount)
         {
             Transparency = amount;
             Color c = Drawable.Pen_Colour;
             c.a = amount;
             Drawable.Pen_Colour = c;
+            Debug.Log("Cambiada transparencia " + Drawable.Pen_Colour.a);
+        }
+
+        public void SetTransparencySlider(Slider mySlider)
+        {
+            SetTransparency(mySlider.value);
         }
 
 

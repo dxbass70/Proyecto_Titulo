@@ -18,7 +18,6 @@ namespace MadFireOn
         public GameObject Ventanapuntaje;
         public GameObject SonidoDerrota;
         public GameObject SonidoVictoria;
-        public GameObject MusicaFondo;
         public Text TextVictoria;
         public Text TextPuntaje;
         public Text Textelectricidad;
@@ -31,6 +30,11 @@ namespace MadFireOn
         private float endTime;
         public Text TextTimer;
 
+        //guardardatos
+        public Tiempoxactividad tiempoxactividad = new Tiempoxactividad();
+        int interval = 1; 
+        float nextTime = 0;
+
         void Awake()
         {
             //at start we want levelComplete false
@@ -41,6 +45,7 @@ namespace MadFireOn
         // Use this for initialization
         void Start()
         {
+            AddTiempoActividad();            
             CtrlRecursos = GameObject.Find("CtrlRecursos"); 
             //get all the pipeObj and are stored in array
             pipeObj = FindObjectsOfType<PipeScript>();
@@ -54,6 +59,7 @@ namespace MadFireOn
         // Update is called once per frame
         void Update()
         {
+
             timeLeft = (int)(endTime - Time.time);            
             
             CheckForLevelComplete();
@@ -72,7 +78,15 @@ namespace MadFireOn
 
             
             else{
-                Tiempo();
+                if (Ventanapuntaje.activeSelf == false){
+                    Tiempo();
+                    if(tiempoxactividad.id_tiempoactividad != 0){
+                        if (Time.time >= nextTime) {
+                            UpdateTiempoActividad();
+                            nextTime += interval;
+                        }
+                    }
+                } 
             }
 
         }
@@ -95,13 +109,13 @@ namespace MadFireOn
         public void FinPartida(int Incremento){
             Puntaje += Incremento;
             if(Incremento == 0){
+                updatetiempoxactividadfinal(1);
                 TextVictoria.text = "Intentalo otra vez";
-                MusicaFondo.GetComponent<AudioSource>().Stop();
                 SonidoDerrota.GetComponent<AudioSource>().Play();
             }
             else{
+                updatetiempoxactividadfinal(0);
                 TextVictoria.text = "Ganaste";
-                MusicaFondo.GetComponent<AudioSource>().Stop();
                 SonidoVictoria.GetComponent<AudioSource>().Play();
             }
             if (Ventanapuntaje.activeSelf == false){
@@ -124,6 +138,29 @@ namespace MadFireOn
             if (timeLeft >= 0){
                 TextTimer.text = timeLeft.ToString();
             }
+        }
+
+        private void AddTiempoActividad(){
+        tiempoxactividad.id_tiempoactividad = 0;    //Id inicializado en 0
+        tiempoxactividad.inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        Debug.Log(tiempoxactividad.inicio);
+        tiempoxactividad.final = tiempoxactividad.inicio;       // inicializamos con tiempo final = a inicial
+        tiempoxactividad.causa = 0;                             //causa por defecto 0
+        tiempoxactividad.usuario_id = SystemSave.usuario.id;
+        tiempoxactividad.reim_id = SystemSave.reim.id;
+        tiempoxactividad.actividad_id = SystemSave.actividad3.id;
+        SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+        }
+
+        private void UpdateTiempoActividad(){
+            tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
+            SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
+        }
+
+        private void updatetiempoxactividadfinal(int causa){
+            tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
+            tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
+            SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
         }
     }
 

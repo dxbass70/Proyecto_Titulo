@@ -41,6 +41,9 @@ public class MazeGenerator : MonoBehaviour {
     [Tooltip("If you want to disable the main sprite so the cell has no background, set to TRUE. This will create a maze with only walls.")]
     public bool disableCellSprite;
 
+    [Header("Seed")]
+    public int cantLvl; //Cantidad de laberintos posibles
+    public int seed; //seed para generar el laberinto
     // ------------------------------------------------------
     // System defined variables - You don't need to touch these:
     // ------------------------------------------------------
@@ -80,6 +83,9 @@ public class MazeGenerator : MonoBehaviour {
      */
     private void Start()
     {
+        seed = Random.Range(0, cantLvl);
+        Random.seed = seed;
+        //Debug.Log("Seed: " + Random.seed);
         GenerateMaze(mazeRows, mazeColumns);
     }
 
