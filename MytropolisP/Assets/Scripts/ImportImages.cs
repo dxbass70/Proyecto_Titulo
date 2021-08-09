@@ -32,7 +32,7 @@ public class ImportImages : MonoBehaviour
     {
         //obtener posicion del slider
         Posicion = transform.position; //el primer dibuje debe eastear en la misma posicion que el padre
-        Posicion.x +=0.15f;
+        //Posicion.x +=Distancia;
         Tamaño = GetComponent<RectTransform>().sizeDelta;
 
         var dirPath = Application.dataPath + "/Dibujos/";
