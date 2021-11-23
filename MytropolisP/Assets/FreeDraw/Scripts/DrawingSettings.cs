@@ -27,9 +27,9 @@ namespace FreeDraw
             SetMarkerWidth((int)new_width);
         }
 
-        public void SetMarkerWidth(Slider mySlider)
+        public void SetMarkerWidthSlider(Slider mySlider)
         {
-            SetMarkerWidth((int)(mySlider.value));
+            SetMarkerWidth((int)mySlider.value);
         }
 
         public void SetTransparency(float amount)
@@ -38,7 +38,7 @@ namespace FreeDraw
             Color c = Drawable.Pen_Colour;
             c.a = amount;
             Drawable.Pen_Colour = c;
-            Debug.Log("Cambiada transparencia " + Drawable.Pen_Colour.a);
+            //Debug.Log("Cambiada transparencia " + Drawable.Pen_Colour.a);
         }
 
         public void SetTransparencySlider(Slider mySlider)

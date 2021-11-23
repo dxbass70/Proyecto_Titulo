@@ -94,24 +94,33 @@ public class CtrlActividad2 : MonoBehaviour
     private void AddTiempoActividad(){
         tiempoxactividad.id_tiempoactividad = 0;    //Id inicializado en 0
         tiempoxactividad.inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        Debug.Log(tiempoxactividad.inicio);
+        //Debug.Log(tiempoxactividad.inicio);
         tiempoxactividad.final = tiempoxactividad.inicio;       // inicializamos con tiempo final = a inicial
         tiempoxactividad.causa = 0;                             //causa por defecto 0
-        tiempoxactividad.usuario_id = SystemSave.usuario.id;
-        tiempoxactividad.reim_id = SystemSave.reim.id;
-        tiempoxactividad.actividad_id = SystemSave.actividad2.id;
-        SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+        if(SystemSave.usuario != null){
+            tiempoxactividad.usuario_id = SystemSave.usuario.id;
+            tiempoxactividad.reim_id = SystemSave.reim.id;
+            tiempoxactividad.actividad_id = SystemSave.actividad2.id;
+            SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+        }
+        
     }
 
     private void UpdateTiempoActividad(){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
-        SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
+        if(SystemSave.usuario != null){
+            SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
+        }
+        
     }
 
     private void updatetiempoxactividadfinal(int causa){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
         tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
-        SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
+        if(SystemSave.usuario != null){
+            SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
+        }
+        
     }
 
     IEnumerator CargandoNivel(){
