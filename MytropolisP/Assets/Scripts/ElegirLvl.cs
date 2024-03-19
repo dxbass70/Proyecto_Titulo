@@ -12,8 +12,8 @@ public class ElegirLvl : MonoBehaviour
         LevelLoader.SendMessage("LoadLevel", NombreEscena);
     }
 
-    public void AccesoNivel(){
-        Nivel = Random.Range(1,8);  //Selecciona un nivel al azar de la actividad 3
+    public void AccesoNivelAct1(){
+        Nivel = Random.Range(1,8);  //Selecciona un nivel al azar de la actividad 1
         Escena = "Actividad1"+Nivel.ToString();
         TransicionEscena(Escena);
 

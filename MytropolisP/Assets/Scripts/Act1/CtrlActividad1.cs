@@ -68,7 +68,7 @@ public class CtrlActividad1 : MonoBehaviour
     }
 
     public void DisminuirVidas(){
-        if(Vidas==-1){
+        if(Vidas<=0){
 
         }
         else{
