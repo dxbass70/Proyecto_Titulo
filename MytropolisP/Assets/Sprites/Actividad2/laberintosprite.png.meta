@@ -76,12 +76,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 387
-        y: 484
+        y: 482
         width: 131
         height: 129
       alignment: 0
@@ -190,7 +190,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 31
-        y: 285
+        y: 283
         width: 131
         height: 131
       alignment: 0
@@ -211,7 +211,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 204
-        y: 285
+        y: 283
         width: 131
         height: 131
       alignment: 0
@@ -252,7 +252,7 @@ TextureImporter:
       name: laberintosprite_5
       rect:
         serializedVersion: 2
-        x: 582
+        x: 580
         y: 281
         width: 133
         height: 132
@@ -273,7 +273,7 @@ TextureImporter:
       name: laberintosprite_6
       rect:
         serializedVersion: 2
-        x: 775
+        x: 773
         y: 283
         width: 129
         height: 133
@@ -337,7 +337,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 28
-        y: 100
+        y: 99
         width: 130
         height: 127
       alignment: 0
@@ -379,7 +379,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 395
-        y: 98
+        y: 99
         width: 133
         height: 131
       alignment: 0
@@ -421,7 +421,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 774
-        y: 97
+        y: 95
         width: 133
         height: 132
       alignment: 0
@@ -441,8 +441,8 @@ TextureImporter:
       name: laberintosprite_14
       rect:
         serializedVersion: 2
-        x: 959
-        y: 92
+        x: 957
+        y: 91
         width: 131
         height: 133
       alignment: 0

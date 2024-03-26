@@ -145,7 +145,11 @@ public static class SystemSave{
 
             return ListaEdificios;
         } else{
-            Debug.LogError("Archivo de guardado no encontrado en " + path);
+            File.Create(path); // si no existe se genera un save para guardar los edificios
+            if (File.Exists(path)){
+                Debug.LogError("No se pudo generar el archivo " + path);
+            }
+            
             return null;
         }
     }

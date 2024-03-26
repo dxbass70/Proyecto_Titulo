@@ -110,7 +110,7 @@ namespace MadFireOn
             Puntaje += Incremento;
             if(Incremento == 0){
                 updatetiempoxactividadfinal(1);
-                TextVictoria.text = "Intentalo otra vez";
+                TextVictoria.text = "Inténtalo otra vez";
                 SonidoDerrota.GetComponent<AudioSource>().Play();
             }
             else{
