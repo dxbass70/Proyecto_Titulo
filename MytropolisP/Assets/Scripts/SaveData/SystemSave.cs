@@ -162,7 +162,7 @@ public static class SystemSave{
         string urlAPI = "http://localhost:3002/api/tiempoxactividad/add";
         var jsonData = JsonUtility.ToJson(data);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(urlAPI, jsonData)){
+        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
             www.SetRequestHeader("content-type", "application/Json");
             www.uploadHandler.contentType = "application/Json";
             www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
@@ -194,7 +194,7 @@ public static class SystemSave{
         string urlAPI = "http://localhost:3002/api/tiempoxactividad/update/"+data.id_tiempoactividad.ToString();
         var jsonData = JsonUtility.ToJson(data);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(urlAPI, jsonData)){
+        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
             www.SetRequestHeader("content-type", "application/Json");
             www.uploadHandler.contentType = "application/Json";
             www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
@@ -226,7 +226,7 @@ public static class SystemSave{
         string urlAPI = "http://localhost:3002/api/asigna_reim_alumno/add";
         var jsonData = JsonUtility.ToJson(data);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(urlAPI, jsonData)){
+        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
             www.SetRequestHeader("content-type", "application/Json");
             www.uploadHandler.contentType = "application/Json";
             www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
@@ -255,7 +255,7 @@ public static class SystemSave{
         string urlAPI = "http://localhost:3002/api/dibujo_reim/add";
         var jsonData = JsonUtility.ToJson(data);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(urlAPI, jsonData)){
+        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
             www.SetRequestHeader("content-type", "application/Json");
             www.uploadHandler.contentType = "application/Json";
             www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
