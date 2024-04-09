@@ -7,7 +7,7 @@ public class ImportAnuncios : MonoBehaviour
     private Vector3 Posicion;
     public Vector2 Tamaño;
     private GameObject publicacion;
-    private bool importado = false;
+    //private bool importado = false;
     public GameObject PrefabPersona;
     public float Distancia;
     public int DebugPersonas;
