@@ -5,10 +5,34 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
 using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 
 
 [Serializable]
+public class DBConnection{
+    private string Host;
+    private string User;
+    private string Password;
+    private string Database;
+    public DBConnection(string Host, string User, string Password, string Database){
+        this.Host = Host;
+        this.User = User;
+        this.Password = Password;
+        this.Database = Database;
+    }
+
+    public string GetConnection(){
+        MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        builder.Server = Host;
+        builder.Port = 3306;
+        builder.UserID = User;
+        builder.Password = Password;
+        builder.Database = Database;
+        return builder.ToString();
+    }
+}
 public class Reim{
     public int id;
     public string nombre;
@@ -52,6 +76,18 @@ public class dibujo_reim{
     public byte[] imagen;
 }
 
+public class Elemento   //clase para almacenar los elementos importantes del reim
+{
+    public int id;
+    public string nombre;
+
+    public Elemento(int id, string nombre){
+        this.id = id;
+        this.nombre = nombre;
+    }
+    
+}
+
 [Serializable]
 public class Asigna_reim_alumno{
     public string sesion_id;
@@ -71,18 +107,26 @@ public class Asigna_reim_alumno{
     }
 }
 public static class SystemSave{
+    //Datos conexion a la bbdd
+    public static DBConnection conexionDB = new DBConnection("66.97.47.164", "ulearnet_web", "Uchile2020.", "ulearnet_reim_pilotaje");
     //Datos del Reim
     
     public static Asigna_reim_alumno asigna_reim_alumno;
-    public static Reim reim = new Reim(301, "Mytropolis");  //Guardamos los datos del reim para futuras consultas
-    public static Actividad actividad1 = new Actividad(11011, "Atrapa la basura", 301);
-    public static Actividad actividad2 = new Actividad(11012, "Laberinto en la ciudad", 301);
-    public static Actividad actividad3 = new Actividad(11013, "Conecta la tuberia", 301);
-    public static Actividad actividad4 = new Actividad(11014, "Galeria", 301);
-    public static Actividad actividadColab = new Actividad(11015, "Tablon de anuncios", 301);
-    public static Actividad Ciudad = new Actividad(11016, "Ciudad", 301);
+    public static Reim reim = new Reim(1006, "Mytropolis");  //Guardamos los datos del reim para futuras consultas
+    public static Actividad Ciudad = new Actividad(230114, "Ciudad", 1006);
+    public static Actividad actividad1 = new Actividad(230115, "Atrapa la basura", 1006);
+    public static Actividad actividad2 = new Actividad(230116, "Laberinto en la ciudad", 1006);
+    public static Actividad actividad3 = new Actividad(230117, "Conecta la tuberia", 1006);
+    public static Actividad actividad4 = new Actividad(230118, "La Galeria", 1006);
+    public static Actividad actividadColab = new Actividad(230119, "Tablon de anuncios", 1006);
+    
     //Datos de la sesion
     public static Usuario usuario;  //Guardamos los datos del usuario para futuras consultas
+
+    //Elementos importantes del reim
+    //public static Elemento Ulearcoin = new Elemento(900, 'Ulearncoin');
+    //public static Elemento Agua = new Elemento(900, 'Ulearncoin');
+    //public static Elemento Electricidad = new Elemento(900, 'Ulearncoin');
 
     public static void SavePlayer (CtrlRecursos recursos){
         BinaryFormatter formatter = new BinaryFormatter();
@@ -155,10 +199,12 @@ public static class SystemSave{
     }
 
     public static void SaveTiempoActividad(Tiempoxactividad data, MonoBehaviour instance){
-        instance.StartCoroutine(addtiempoxactividad(data));
+        //instance.StartCoroutine(addtiempoxactividad(data));
     }
 
+    /*
     public static IEnumerator addtiempoxactividad(Tiempoxactividad data){
+        
         string urlAPI = "http://localhost:3002/api/tiempoxactividad/add";
         var jsonData = JsonUtility.ToJson(data);
 
@@ -183,14 +229,18 @@ public static class SystemSave{
             }
 
         }
+        
 
     }
+    */
 
     public static void UpdateTiempoActividad(Tiempoxactividad data, MonoBehaviour instance){
-        instance.StartCoroutine(updatetiempoxactividad(data));
+        //instance.StartCoroutine(updatetiempoxactividad(data));
     }
 
+    /*
     public static IEnumerator updatetiempoxactividad(Tiempoxactividad data){
+        
         string urlAPI = "http://localhost:3002/api/tiempoxactividad/update/"+data.id_tiempoactividad.ToString();
         var jsonData = JsonUtility.ToJson(data);
 
@@ -215,14 +265,18 @@ public static class SystemSave{
             }
 
         }
+        
 
     }
+    */
 
     public static void Put_asigna_reim_alumno(Asigna_reim_alumno data, MonoBehaviour instance){
-        instance.StartCoroutine(put_asigna_reim_alumno(data));
+        //instance.StartCoroutine(put_asigna_reim_alumno(data));
     }
 
+    /*
     public static IEnumerator put_asigna_reim_alumno(Asigna_reim_alumno data){
+        
         string urlAPI = "http://localhost:3002/api/asigna_reim_alumno/add";
         var jsonData = JsonUtility.ToJson(data);
 
@@ -244,13 +298,16 @@ public static class SystemSave{
             }
 
         }
+        
 
     }
+    */
 
     public static void Adddibujoreim(dibujo_reim data, MonoBehaviour instance){
-        instance.StartCoroutine(adddibujoreim(data));
+        //instance.StartCoroutine(adddibujoreim(data));
     }
 
+    /*
     public static IEnumerator adddibujoreim(dibujo_reim data){
         string urlAPI = "http://localhost:3002/api/dibujo_reim/add";
         var jsonData = JsonUtility.ToJson(data);
@@ -276,6 +333,7 @@ public static class SystemSave{
         }
 
     }
+    */
 }
 
 public struct ListContainer

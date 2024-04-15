@@ -165,6 +165,7 @@ namespace MadFireOn
             }
             catch (Exception e)
             {
+                print(e);
             }
             finally
             {
@@ -189,6 +190,7 @@ namespace MadFireOn
             }
             catch (Exception e)
             {
+                print(e);
             }
             finally
             {

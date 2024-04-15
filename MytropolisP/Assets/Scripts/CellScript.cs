@@ -16,14 +16,14 @@ public class CellScript : MonoBehaviour {
 
     void checkwalls(){  //Comprueba si no hay muros
         ////Si no no hay muro der
-        if(wallR.active == false){
-            if(wallU.active == false){
-                if(wallD.active == false){
+        if(wallR.activeSelf == false){
+            if(wallU.activeSelf == false){
+                if(wallD.activeSelf == false){
                     //poner sprite de esquina
                     GetComponent<SpriteRenderer>().sprite = sprites[12];
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 }
-                else if(wallL.active == false){
+                else if(wallL.activeSelf == false){
                     //poner sprite de esquina
                     GetComponent<SpriteRenderer>().sprite = sprites[11];
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -34,8 +34,8 @@ public class CellScript : MonoBehaviour {
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 }  
             }
-            else if(wallD.active == false){
-                if(wallL.active == false){
+            else if(wallD.activeSelf == false){
+                if(wallL.activeSelf == false){
                     //poner sprite de esquina
                     GetComponent<SpriteRenderer>().sprite = sprites[9];
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -46,16 +46,16 @@ public class CellScript : MonoBehaviour {
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 } 
             }
-            else if(wallL.active == true){
+            else if(wallL.activeSelf == true){
                 GetComponent<SpriteRenderer>().sprite = sprites[7];
             }
         
         }
 
         //Si no no hay muro izq
-        else if(wallL.active == false){
-            if(wallU.active == false){
-                if(wallD.active == false){
+        else if(wallL.activeSelf == false){
+            if(wallU.activeSelf == false){
+                if(wallD.activeSelf == false){
                     //poner sprite de esquina
                     GetComponent<SpriteRenderer>().sprite = sprites[10];
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -66,7 +66,7 @@ public class CellScript : MonoBehaviour {
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 }  
             }
-            else if(wallD.active == false){
+            else if(wallD.activeSelf == false){
                 //poner sprite de esquina
                 GetComponent<SpriteRenderer>().sprite = sprites[2];
                 //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -77,16 +77,16 @@ public class CellScript : MonoBehaviour {
         
         }
 
-        else if(wallU.active == false && wallD.active == false){
+        else if(wallU.activeSelf == false && wallD.activeSelf == false){
             //poner sprite de vertical
             GetComponent<SpriteRenderer>().sprite = sprites[4];
             //GetComponent<Renderer>().material.SetColor("_Color", Color.blue);            
         }
-        else if(wallU.active == false){
+        else if(wallU.activeSelf == false){
             GetComponent<SpriteRenderer>().sprite = sprites[6];
         }
 
-        else if(wallD.active == false){
+        else if(wallD.activeSelf == false){
             GetComponent<SpriteRenderer>().sprite = sprites[8];
         }
 

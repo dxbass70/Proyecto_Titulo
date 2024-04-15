@@ -27,13 +27,13 @@ public class Login : MonoBehaviour
         private Usuario usuario;
 
         [Header("Database Properties")]
-        private string Host = "66.97.47.164";
+        //private string Host = "66.97.47.164";
         //public string Host = "localhost";
         private string User = "ulearnet_web";
-        //public string User = "root";
-        private string Password = "Uchile2020.";
+        ////public string User = "root";
+        //private string Password = "Uchile2020.";
         //public string Password = "password";
-        private string Database = "ulearnet_reim_pilotaje";
+        //private string Database = "ulearnet_reim_pilotaje";
         //public string Database = "test";
 
         #endregion
@@ -58,22 +58,23 @@ public class Login : MonoBehaviour
             usuario.password = contrasenaInput.GetComponent<InputField>().text;
             if (string.IsNullOrWhiteSpace(usuario.loginame) || string.IsNullOrWhiteSpace(usuario.password)) //en caso de que un campo este vacio no se ahce la consulta
             {
-                print("Nonono ta mal");
+                //print("Nonono ta mal");
                 textError.SetActive(true);
                 return;
             }
 
             //Se construyen los datos para la conexion a la bbdd
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = Host;
-            builder.Port = 3306;
-            builder.UserID = User;
-            builder.Password = Password;
-            builder.Database = Database;
+            //MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            //builder.Server = Host;
+            //builder.Port = 3306;
+            //builder.UserID = User;
+            //builder.Password = Password;
+            //builder.Database = Database;
 
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(builder.ToString()))
+                //using (MySqlConnection connection = new MySqlConnection(builder.ToString()))
+                using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection()))
                 {
                     connection.Open();
                     //print("MySQL - Opened Connection");
@@ -103,7 +104,7 @@ public class Login : MonoBehaviour
                                     Debug.Log("Ingresando a la ciudad");
                                 }else
                                 {
-                                    print("Nonono ta mal"); //no se encontro usuario
+                                    //print("Nonono ta mal"); //no se encontro usuario
                                     textError.SetActive(true);
                                 }
                             }

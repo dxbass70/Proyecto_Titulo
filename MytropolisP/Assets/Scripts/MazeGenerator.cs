@@ -49,7 +49,7 @@ public class MazeGenerator : MonoBehaviour {
     // ------------------------------------------------------
 
     // Variable to store size of centre room. Hard coded to be 2.
-    private int centreSize = 2;
+    //private int centreSize = 2;
 
     // Dictionary to hold and locate all cells in maze.
     private Dictionary<Vector2, Cell> allCells = new Dictionary<Vector2, Cell>();
@@ -84,7 +84,7 @@ public class MazeGenerator : MonoBehaviour {
     private void Start()
     {
         seed = Random.Range(0, cantLvl);
-        Random.seed = seed;
+        Random.InitState(seed);
         //Debug.Log("Seed: " + Random.seed);
         GenerateMaze(mazeRows, mazeColumns);
     }
