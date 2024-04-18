@@ -26,10 +26,10 @@ public class Login : MonoBehaviour
         public GameObject textError;
         private Usuario usuario;
 
-        [Header("Database Properties")]
+        //[Header("Database Properties")]
         //private string Host = "66.97.47.164";
         //public string Host = "localhost";
-        private string User = "ulearnet_web";
+        //private string User = "ulearnet_web";
         ////public string User = "root";
         //private string Password = "Uchile2020.";
         //public string Password = "password";

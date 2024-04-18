@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 using System.IO;
@@ -109,6 +110,10 @@ public class Asigna_reim_alumno{
 public static class SystemSave{
     //Datos conexion a la bbdd
     public static DBConnection conexionDB = new DBConnection("66.97.47.164", "ulearnet_web", "Uchile2020.", "ulearnet_reim_pilotaje");
+
+    //Datos de la sesion
+    public static Usuario usuario;  //Guardamos los datos del usuario para futuras consultas
+
     //Datos del Reim
     
     public static Asigna_reim_alumno asigna_reim_alumno;
@@ -119,14 +124,11 @@ public static class SystemSave{
     public static Actividad actividad3 = new Actividad(230117, "Conecta la tuberia", 1006);
     public static Actividad actividad4 = new Actividad(230118, "La Galeria", 1006);
     public static Actividad actividadColab = new Actividad(230119, "Tablon de anuncios", 1006);
-    
-    //Datos de la sesion
-    public static Usuario usuario;  //Guardamos los datos del usuario para futuras consultas
 
     //Elementos importantes del reim
-    //public static Elemento Ulearcoin = new Elemento(900, 'Ulearncoin');
-    //public static Elemento Agua = new Elemento(900, 'Ulearncoin');
-    //public static Elemento Electricidad = new Elemento(900, 'Ulearncoin');
+    public static Elemento Ulearcoin = new Elemento(900, "Ulearncoin");
+    public static Elemento Agua = new Elemento(3016, "Agua");
+    public static Elemento Electricidad = new Elemento(6660157, "Electricidad");
 
     public static void SavePlayer (CtrlRecursos recursos){
         BinaryFormatter formatter = new BinaryFormatter();
@@ -198,142 +200,35 @@ public static class SystemSave{
         }
     }
 
-    public static void SaveTiempoActividad(Tiempoxactividad data, MonoBehaviour instance){
-        //instance.StartCoroutine(addtiempoxactividad(data));
-    }
-
-    /*
-    public static IEnumerator addtiempoxactividad(Tiempoxactividad data){
-        
-        string urlAPI = "http://localhost:3002/api/tiempoxactividad/add";
-        var jsonData = JsonUtility.ToJson(data);
-
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
-            www.SetRequestHeader("content-type", "application/Json");
-            www.uploadHandler.contentType = "application/Json";
-            www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
-            yield return www.SendWebRequest();
-            if(www.isNetworkError){
-                Debug.LogError(www.error);
-            }else{
-                if(www.isDone){
-                    string result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-                    if(result != null){
-                        //var id = JsonUtility.FromJson<String>(result);
-                        //Debug.Log(result);
-                        data.id_tiempoactividad = Convert.ToInt32(result);;
-                        Debug.Log(data.id_tiempoactividad);
-                        Debug.Log("agregado tiempoxactividad");
+    public static string GetUserFullName(int id){ //retorna en un string nombre y apellidos del usuario por su id
+        string nombreCompleto = string.Empty;
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string sqlQuery = "SELECT nombres, apellido_paterno, apellido_materno FROM usuario WHERE id='"+id+"'";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+                        using (MySqlDataReader reader = command.ExecuteReader()){
+                            if (reader.Read()){ 
+                                //nombreCompleto = reader["nombres"].ToString() + ' ' + reader["apellido_paterno"].ToString() + ' ' + reader["apellido_materno"].ToString();
+                                nombreCompleto = reader["nombres"].ToString();
+                            }
+                        }
                     }
+                        
                 }
-            }
-
-        }
-        
-
-    }
-    */
-
-    public static void UpdateTiempoActividad(Tiempoxactividad data, MonoBehaviour instance){
-        //instance.StartCoroutine(updatetiempoxactividad(data));
-    }
-
-    /*
-    public static IEnumerator updatetiempoxactividad(Tiempoxactividad data){
-        
-        string urlAPI = "http://localhost:3002/api/tiempoxactividad/update/"+data.id_tiempoactividad.ToString();
-        var jsonData = JsonUtility.ToJson(data);
-
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
-            www.SetRequestHeader("content-type", "application/Json");
-            www.uploadHandler.contentType = "application/Json";
-            www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
-            yield return www.SendWebRequest();
-            if(www.isNetworkError){
-                Debug.LogError(www.error);
-            }else{
-                if(www.isDone){
-                    string result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-                    if(result != null){
-                        //var id = JsonUtility.FromJson<String>(result);
-                        //Debug.Log(result);
-                        //data.id = Convert.ToInt32(result);;
-                        Debug.Log(result);
-                        Debug.Log("Actualizando tiempoxactividad");
-                    }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
                 }
+                Debug.Log("MySQL - Closed Connection");
+                connection.Close();
             }
-
         }
-        
-
-    }
-    */
-
-    public static void Put_asigna_reim_alumno(Asigna_reim_alumno data, MonoBehaviour instance){
-        //instance.StartCoroutine(put_asigna_reim_alumno(data));
-    }
-
-    /*
-    public static IEnumerator put_asigna_reim_alumno(Asigna_reim_alumno data){
-        
-        string urlAPI = "http://localhost:3002/api/asigna_reim_alumno/add";
-        var jsonData = JsonUtility.ToJson(data);
-
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
-            www.SetRequestHeader("content-type", "application/Json");
-            www.uploadHandler.contentType = "application/Json";
-            www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
-            yield return www.SendWebRequest();
-            if(www.isNetworkError){
-                Debug.LogError(www.error);
-            }else{
-                if(www.isDone){
-                    string result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-                    if(result != null){
-                        //Debug.Log("Sesion "+data.sesion_id+" registrada");                        
-                    }
-                    
-                }
-            }
-
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
         }
-        
-
+        return nombreCompleto;
     }
-    */
-
-    public static void Adddibujoreim(dibujo_reim data, MonoBehaviour instance){
-        //instance.StartCoroutine(adddibujoreim(data));
-    }
-
-    /*
-    public static IEnumerator adddibujoreim(dibujo_reim data){
-        string urlAPI = "http://localhost:3002/api/dibujo_reim/add";
-        var jsonData = JsonUtility.ToJson(data);
-
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(urlAPI, jsonData)){
-            www.SetRequestHeader("content-type", "application/Json");
-            www.uploadHandler.contentType = "application/Json";
-            www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
-            yield return www.SendWebRequest();
-            if(www.isNetworkError){
-                Debug.LogError(www.error);
-            }else{
-                if(www.isDone){
-                    string result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-                    if(result != null){
-                        data.id_imagenes_reim = Convert.ToInt32(result);;
-                        Debug.Log(data.id_imagenes_reim);
-                        Debug.Log("agregado dibujo_reim");
-                    }
-                }
-            }
-
-        }
-
-    }
-    */
 }
 
 public struct ListContainer

@@ -14,7 +14,7 @@ public class ExportPNG : MonoBehaviour
         byte[] bytes = texture.EncodeToPNG();                           //bytes del dibujo
         //Debug.Log("Sesion "+SystemSave.asigna_reim_alumno.sesion_id+" registrada");
         Guardardibujo(dibujo, bytes);
-        SystemSave.Adddibujoreim(dibujo, this);
+        //SystemSave.Adddibujoreim(dibujo, this);
         SonidoGuardado.GetComponent<AudioSource>().Play();
         }
 

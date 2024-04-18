@@ -88,17 +88,17 @@ public class CtrlActividad1 : MonoBehaviour
         tiempoxactividad.usuario_id = SystemSave.usuario.id;
         tiempoxactividad.reim_id = SystemSave.reim.id;
         tiempoxactividad.actividad_id = SystemSave.actividad1.id;
-        SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+        //SystemSave.SaveTiempoActividad(tiempoxactividad, this);
     }
 
     private void UpdateTiempoActividad(){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
-        SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
+        //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
     }
 
     private void updatetiempoxactividadfinal(int causa){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
         tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
-        SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
+        //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
     }
 }

@@ -101,7 +101,7 @@ public class CtrlActividad2 : MonoBehaviour
             tiempoxactividad.usuario_id = SystemSave.usuario.id;
             tiempoxactividad.reim_id = SystemSave.reim.id;
             tiempoxactividad.actividad_id = SystemSave.actividad2.id;
-            SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+            //SystemSave.SaveTiempoActividad(tiempoxactividad, this);
         }
         
     }
@@ -109,7 +109,7 @@ public class CtrlActividad2 : MonoBehaviour
     private void UpdateTiempoActividad(){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
         if(SystemSave.usuario != null){
-            SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
+            //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
         }
         
     }
@@ -118,7 +118,7 @@ public class CtrlActividad2 : MonoBehaviour
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
         tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
         if(SystemSave.usuario != null){
-            SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
+            //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
         }
         
     }
