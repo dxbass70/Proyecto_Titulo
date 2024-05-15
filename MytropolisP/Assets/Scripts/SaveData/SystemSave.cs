@@ -112,7 +112,8 @@ public static class SystemSave{
     public static DBConnection conexionDB = new DBConnection("66.97.47.164", "ulearnet_web", "Uchile2020.", "ulearnet_reim_pilotaje");
 
     //Datos de la sesion
-    public static Usuario usuario;  //Guardamos los datos del usuario para futuras consultas
+    //Inicializados por defecto para agilizar el desarrollo *ACUERDATE DE BORRARLO*
+    public static Usuario usuario = new Usuario(); //Guardamos los datos del usuario para futuras consultas
 
     //Datos del Reim
     
@@ -188,7 +189,8 @@ public static class SystemSave{
                 ListaEdificios.Add(edificioData);
                 //Debug.Log("pos: " + container.dataList[i].pos + ", position: " + container.dataList[i].position + ", Ultimo Cobro: " + container.dataList[i].UltimoCobro);
             }
-
+            //TEMPORAL MIENTRAS SE SOLUCIONA EDIFICIOS SUPERPUESTOS
+            ListaEdificios = new List<EdificioData>();
             return ListaEdificios;
         } else{
             File.Create(path); // si no existe se genera un save para guardar los edificios

@@ -19,9 +19,9 @@ public class CtrlAnuncio : MonoBehaviour
     public Text electricidad;
 
     public void SelectPersona(){ //Se elige el anuncio
+        NuevaVentana.GetComponent<RealizarIntercambio>().SetDatos(anuncio);
         VentanaActual.SetActive(false);
         NuevaVentana.SetActive(true);
-        NuevaVentana.GetComponent<RealizarIntercambio>().SetDatos(anuncio);
     }
 
     public void AsignarDatos(Anuncio a, GameObject ventanaAct, GameObject ventanaNueva){

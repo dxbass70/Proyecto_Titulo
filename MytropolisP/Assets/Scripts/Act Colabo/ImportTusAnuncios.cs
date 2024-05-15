@@ -50,14 +50,15 @@ public class ImportTusAnuncios : MonoBehaviour
                                 //ajustar el tamaño del canvas para que quepan los anuncios
                                 GetComponent<RectTransform>().sizeDelta += new Vector2(0, Tamaño.y); 
                                 DebugPersonas++;
-                                print("Fila " + DebugPersonas + ":"); //para orientarme
+                                //print("Fila " + DebugPersonas + ":"); //para orientarme
                                 //leer datos
                                 int usuarioenvia_id = Convert.ToInt32(reader["usuarioenvia_id"]);
                                 int usuariorecibe_id = Convert.ToInt32(reader["usuariorecibe_id"]);
                                 int elemento_id = Convert.ToInt32(reader["elemento_id"]);
                                 int cantidadOfrece = Convert.ToInt32(reader["catalogo_id"]);    //catalogo_id corresponde a la cantidad de la oferta
                                 DateTime datetime_transac = reader.GetDateTime(reader.GetOrdinal("datetime_transac"));
-                                SearchAnuncio(usuarioenvia_id, elemento_id, cantidadOfrece, datetime_transac);
+                                int estado = Convert.ToInt32(reader["estado"]);
+                                SearchAnuncio(usuarioenvia_id, elemento_id, cantidadOfrece, datetime_transac, estado);
                             }
                         }
                     }
@@ -87,7 +88,7 @@ public class ImportTusAnuncios : MonoBehaviour
             }
     }
 
-    private void SearchAnuncio(int id, int elemento_id, int cantidad, DateTime date){ //busca en la lista de anuncios si ya existe un anuncio hecho por el mismo usuario con la misma fecha
+    private void SearchAnuncio(int id, int elemento_id, int cantidad, DateTime date, int estado){ //busca en la lista de anuncios si ya existe un anuncio hecho por el mismo usuario con la misma fecha
         foreach(Anuncio a in Anuncios){
             if(a.date == date && a.id == id){   //si la hay un anuncio con esa fecha
                 if(elemento_id == SystemSave.Ulearcoin.id && a.monedas == 0){ //si son UlearnCoin
@@ -120,6 +121,7 @@ public class ImportTusAnuncios : MonoBehaviour
         }
         newAnun.nombre = SystemSave.GetUserFullName(id);  //Asignamos el nombre del anunciante
         newAnun.date = date;    //Registramos la fecha de publicacion
+        newAnun.estado = estado;    //Registramos la fecha de publicacion
         //Lo agregamos a la lista
         Anuncios.Add(newAnun);
 

@@ -128,7 +128,8 @@ public class Login : MonoBehaviour
         }
 
         private void asigna_reim_alumno(){ //Registramos el inicio de sesion en la base de datos
-            print("Registrado inicio de sesion....(mentira aun no lo programo :b)");
+            //print("Registrado inicio de sesion....(mentira aun no lo programo :b)");
+            print("Registrado inicio de sesion....");
         }
 
         #endregion

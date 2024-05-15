@@ -14,6 +14,7 @@ public class Anuncio    //objeto con los datos del anuncio
     public int monedas; //Cantidad UlearnCoins
     public int agua;    //Cantidad Agua
     public int elect;   //Cantidad Electricidad
+    public int estado;  //corrobora si el anuncio tiene una oferta (estado = 1) o solo es una peticion (estado = 0)
 }
 
 public class ImportAnuncios : MonoBehaviour
@@ -57,14 +58,15 @@ public class ImportAnuncios : MonoBehaviour
                                 //ajustar el tamaño del canvas para que quepan los anuncios
                                 GetComponent<RectTransform>().sizeDelta += new Vector2(0, Tamaño.y); 
                                 DebugPersonas++;
-                                print("Fila " + DebugPersonas + ":"); //para orientarme
+                                //print("Fila " + DebugPersonas + ":"); //para orientarme
                                 //leer datos
                                 int usuarioenvia_id = Convert.ToInt32(reader["usuarioenvia_id"]);
                                 int usuariorecibe_id = Convert.ToInt32(reader["usuariorecibe_id"]);
                                 int elemento_id = Convert.ToInt32(reader["elemento_id"]);
                                 int cantidad = Convert.ToInt32(reader["cantidad"]);
                                 DateTime datetime_transac = reader.GetDateTime(reader.GetOrdinal("datetime_transac"));
-                                SearchAnuncio(usuariorecibe_id, elemento_id, cantidad, datetime_transac);
+                                int estado = Convert.ToInt32(reader["estado"]);
+                                SearchAnuncio(usuariorecibe_id, elemento_id, cantidad, datetime_transac, estado);
                             }
                         }
                     }
@@ -94,17 +96,16 @@ public class ImportAnuncios : MonoBehaviour
             }
     }
 
-    private void SearchAnuncio(int id, int elemento_id, int cantidad, DateTime date){ //busca en la lista de anuncios si ya existe un anuncio hecho por el mismo usuario con la misma fecha
+    private void SearchAnuncio(int id, int elemento_id, int cantidad, DateTime date, int estado){ //busca en la lista de anuncios si ya existe un anuncio hecho por el mismo usuario con la misma fecha
         foreach(Anuncio a in Anuncios){
             if(a.date == date && a.id == id){   //si la hay un anuncio con esa fecha
                 if(elemento_id == SystemSave.Ulearcoin.id && a.monedas == 0){ //si son UlearnCoin
                     a.monedas = cantidad;    //Asignamos la cantidad al anuncio
-
                 }else if(elemento_id == SystemSave.Agua.id && a.agua == 0){ //si es Agua
                     a.agua = cantidad;   //Asignamos la cantidad al anuncio
                 }else if(elemento_id == SystemSave.Electricidad.id && a.elect == 0){ //si es Electricidad
                     a.elect = cantidad;   //Asignamos la cantidad al anuncio
-                }else{  //si hay un anincio con fecha e id pero ya esta relleno
+                }else{  //si hay un anuncio con fecha e id pero ya esta relleno
                     print("Hmmmm esto no deberia pasar  0.o");
                     print("monedas: " + a.monedas);
                     print("Agua: " + a.agua);
@@ -127,6 +128,7 @@ public class ImportAnuncios : MonoBehaviour
         }
         newAnun.nombre = SystemSave.GetUserFullName(id);  //Asignamos el nombre del anunciante
         newAnun.date = date;    //Registramos la fecha de publicacion
+        newAnun.estado = estado;    //Registramos la fecha de publicacion
         //Lo agregamos a la lista
         Anuncios.Add(newAnun);
 
