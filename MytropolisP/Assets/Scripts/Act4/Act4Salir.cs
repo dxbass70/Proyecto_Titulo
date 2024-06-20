@@ -10,6 +10,7 @@ public class Act4Salir : MonoBehaviour
 
     public void TransicionEscena(string NombreEscena)
     {
+        SystemSave.Updateasigna_reim_alumno();  //actualiza la duracion de la sesion
         LevelLoader.SendMessage("LoadLevel", NombreEscena);
     }
 }

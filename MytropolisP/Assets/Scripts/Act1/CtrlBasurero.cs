@@ -31,7 +31,7 @@ public class CtrlBasurero : MonoBehaviour {
             CtrlSonidoA1.PlaySound ();
             Destroy(other.gameObject);
             ActivityCtrl.SendMessage("IncrementarPuntos");
-            Debug.Log("Basura destruida, +1 punto");
+            //Debug.Log("Basura destruida, +1 punto");
         }
     }
   

@@ -95,10 +95,10 @@ public class Asigna_reim_alumno{
     public int usuario_id;
     public int periodo_id;
     public int reim_id;
-    public string datetime_inicio;
-    public string datetime_termino;
+    public DateTime datetime_inicio;
+    public DateTime datetime_termino;
 
-    public Asigna_reim_alumno(string sesion_id, int usuario_id, int periodo_id, int reim_id, string datetime_inicio, string datetime_termino){
+    public Asigna_reim_alumno(string sesion_id, int usuario_id, int periodo_id, int reim_id, DateTime datetime_inicio, DateTime datetime_termino){
         this.sesion_id = sesion_id;
         this.usuario_id = usuario_id;
         this.periodo_id = periodo_id;
@@ -114,10 +114,16 @@ public static class SystemSave{
     //Datos de la sesion
     //Inicializados por defecto para agilizar el desarrollo *ACUERDATE DE BORRARLO*
     public static Usuario usuario = new Usuario(); //Guardamos los datos del usuario para futuras consultas
+    //usuario.id = 380;
+    //usuario.loginame = 'prueba380';
+    //usuario.password = '1234';
+    //usuario.nombre = 'Benjamin Nelson';
+
+    public static Asigna_reim_alumno asigna_reim_alumno;
 
     //Datos del Reim
     
-    public static Asigna_reim_alumno asigna_reim_alumno;
+    
     public static Reim reim = new Reim(1006, "Mytropolis");  //Guardamos los datos del reim para futuras consultas
     public static Actividad Ciudad = new Actividad(230114, "Ciudad", 1006);
     public static Actividad actividad1 = new Actividad(230115, "Atrapa la basura", 1006);
@@ -222,7 +228,7 @@ public static class SystemSave{
                 catch (MySqlException exception){
                     Debug.Log(exception.Message);
                 }
-                Debug.Log("MySQL - Closed Connection");
+                //Debug.Log("MySQL - Closed Connection");
                 connection.Close();
             }
         }
@@ -230,6 +236,163 @@ public static class SystemSave{
             Debug.Log(exception.Message);
         }
         return nombreCompleto;
+    }
+
+    //Actualiza la duracion de la sesion
+    public static void Updateasigna_reim_alumno(){ //Actualizamos con la fecha actual
+        
+        DateTime dateFinal = DateTime.Now;
+        //Debug.Log("Actualizando duracion de la sesion..." + dateFinal);
+        asigna_reim_alumno.datetime_termino = dateFinal; //se actualiza el objeto de la sesion
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string sqlQuery = "UPDATE asigna_reim_alumno SET datetime_termino = @Nuevafecha WHERE sesion_id=@thisesion_id";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+
+                        //valores nuevos
+                        command.Parameters.AddWithValue("@Nuevafecha", asigna_reim_alumno.datetime_termino);
+                        //condicion (id de la sesion)
+                        command.Parameters.AddWithValue("@thisesion_id", asigna_reim_alumno.sesion_id);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        Console.WriteLine($"{rowsAffected} fila(s) afectada(s).");
+                    }
+                        
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+                //Debug.Log("MySQL - Closed Connection");
+                connection.Close();
+            }
+        }
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
+        }
+    }
+
+    //Actualizar tiempo de la actividad
+    public static void SaveTiempoActividad(Tiempoxactividad tiempoactinicial){
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string sqlQuery = "INSERT INTO tiempoxactividad (inicio, final, causa, usuario_id, reim_id, actividad_id) VALUES (@inicio, @final, @causa, @usuario_id, @reim_id, @actividad_id)";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+
+                        //valores nuevos
+                        command.Parameters.AddWithValue("@inicio", tiempoactinicial.inicio);
+                        command.Parameters.AddWithValue("@final", tiempoactinicial.final);
+                        command.Parameters.AddWithValue("@causa", tiempoactinicial.causa);
+                        command.Parameters.AddWithValue("@usuario_id", tiempoactinicial.usuario_id);
+                        command.Parameters.AddWithValue("@reim_id", tiempoactinicial.reim_id);
+                        command.Parameters.AddWithValue("@actividad_id", tiempoactinicial.actividad_id);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Console.WriteLine($"{rowsAffected} fila(s) afectada(s).");
+                        
+                    }
+                        
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+
+                //recuperar id del los datos insertados
+                string selectQuery = "SELECT id FROM tiempoxactividad WHERE inicio = @inicio AND final = @final AND causa = @causa AND usuario_id = @usuario_id AND reim_id = @reim_id AND actividad_id = @actividad_id";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(selectQuery, connection)){
+                        command.Parameters.AddWithValue("@inicio", tiempoactinicial.inicio);
+                        command.Parameters.AddWithValue("@final", tiempoactinicial.final);
+                        command.Parameters.AddWithValue("@causa", tiempoactinicial.causa);
+                        command.Parameters.AddWithValue("@usuario_id", tiempoactinicial.usuario_id);
+                        command.Parameters.AddWithValue("@reim_id", tiempoactinicial.reim_id);
+                        command.Parameters.AddWithValue("@actividad_id", tiempoactinicial.actividad_id);
+                        using (MySqlDataReader reader = command.ExecuteReader()){
+                            if (reader.Read()){
+                                // Acceder a los datos de cada fila
+                                tiempoactinicial.id_tiempoactividad = reader.GetInt32(0);
+                                //Debug.Log("id tiempoactividad: " + tiempoactinicial.id_tiempoactividad);
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+                //Debug.Log("MySQL - Closed Connection");
+                connection.Close();
+            }
+        }
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
+        }
+    }
+
+    public static IEnumerator UpdateTiempoActividad(int id, string dateFinal){ //Actualizamos con el momento actual
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string sqlQuery = "UPDATE tiempoxactividad SET final = @Datetimefinal WHERE id=@id_tiempoactividad";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+                        //Debug.Log("actualizando fecha final: " + dateFinal);
+                        //valores nuevos
+                        command.Parameters.AddWithValue("@Datetimefinal", dateFinal);
+                        command.Parameters.AddWithValue("@id_tiempoactividad", id);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        Console.WriteLine($"{rowsAffected} fila(s) afectada(s).");
+                    }
+                        
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+                //Debug.Log("MySQL - Closed Connection");
+                connection.Close();
+            }
+        }
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
+        }
+        yield return new WaitForSeconds(2f);
+    }
+
+    public static IEnumerator UpdateTiempoActividadFinal(int id, string dateFinal, int causa){ //Actualizamos con el momento actual
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string sqlQuery = "UPDATE tiempoxactividad SET final = @Datetimefinal, causa = @causa WHERE id=@id_tiempoactividad";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+                        //Debug.Log("actualizando fecha final: " + dateFinal);
+                        //valores nuevos
+                        command.Parameters.AddWithValue("@Datetimefinal", dateFinal);
+                        command.Parameters.AddWithValue("@causa", causa);
+                        command.Parameters.AddWithValue("@id_tiempoactividad", id);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        Console.WriteLine($"{rowsAffected} fila(s) afectada(s).");
+                    }
+                        
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+                //Debug.Log("MySQL - Closed Connection");
+                connection.Close();
+            }
+        }
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
+        }
+        yield return new WaitForSeconds(1f);
     }
 }
 

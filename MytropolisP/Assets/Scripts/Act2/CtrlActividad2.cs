@@ -32,9 +32,7 @@ public class CtrlActividad2 : MonoBehaviour
     float nextTime = 0;
 
     void Start()
-    {   
-        AddTiempoActividad();
-        
+    {           
         CtrlRecursos = GameObject.Find("CtrlRecursos");  
         endTime = Time.time + TiempoDisponible + 1;
         TextMesh.text = TiempoDisponible.ToString();
@@ -52,7 +50,7 @@ public class CtrlActividad2 : MonoBehaviour
             TextMesh.text = timeLeft.ToString();
             if(tiempoxactividad.id_tiempoactividad != 0){
                 if (Time.time >= nextTime) {
-                    UpdateTiempoActividad();
+                    //UpdateTiempoActividad();  //desactivado realentiza el juego
                     nextTime += interval;
                 }
             }
@@ -74,7 +72,7 @@ public class CtrlActividad2 : MonoBehaviour
             SonidoDerrota.GetComponent<AudioSource>().Play();
         }
         else{
-            updatetiempoxactividadfinal(0);
+            updatetiempoxactividadfinal(2);
             TextVictoria.text = "Ganaste";
             SonidoVictoria.GetComponent<AudioSource>().Play();
         }
@@ -92,34 +90,27 @@ public class CtrlActividad2 : MonoBehaviour
     }
 
     private void AddTiempoActividad(){
-        tiempoxactividad.id_tiempoactividad = 0;    //Id inicializado en 0
         tiempoxactividad.inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         //Debug.Log(tiempoxactividad.inicio);
         tiempoxactividad.final = tiempoxactividad.inicio;       // inicializamos con tiempo final = a inicial
         tiempoxactividad.causa = 0;                             //causa por defecto 0
-        if(SystemSave.usuario != null){
-            tiempoxactividad.usuario_id = SystemSave.usuario.id;
-            tiempoxactividad.reim_id = SystemSave.reim.id;
-            tiempoxactividad.actividad_id = SystemSave.actividad2.id;
-            //SystemSave.SaveTiempoActividad(tiempoxactividad, this);
-        }
+        tiempoxactividad.usuario_id = SystemSave.usuario.id;
+        tiempoxactividad.reim_id = SystemSave.reim.id;
+        tiempoxactividad.actividad_id = SystemSave.actividad2.id;
+        SystemSave.SaveTiempoActividad(tiempoxactividad);
         
     }
 
     private void UpdateTiempoActividad(){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
-        if(SystemSave.usuario != null){
-            //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
-        }
+        StartCoroutine(SystemSave.UpdateTiempoActividad(tiempoxactividad.id_tiempoactividad ,tiempoxactividad.final));
         
     }
 
     private void updatetiempoxactividadfinal(int causa){
         tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
         tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
-        if(SystemSave.usuario != null){
-            //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
-        }
+        StartCoroutine(SystemSave.UpdateTiempoActividadFinal(tiempoxactividad.id_tiempoactividad ,tiempoxactividad.final, tiempoxactividad.causa));
         
     }
 

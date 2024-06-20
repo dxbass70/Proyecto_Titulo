@@ -82,7 +82,7 @@ namespace MadFireOn
                     Tiempo();
                     if(tiempoxactividad.id_tiempoactividad != 0){
                         if (Time.time >= nextTime) {
-                            UpdateTiempoActividad();
+                            //UpdateTiempoActividad();
                             nextTime += interval;
                         }
                     }
@@ -114,7 +114,7 @@ namespace MadFireOn
                 SonidoDerrota.GetComponent<AudioSource>().Play();
             }
             else{
-                updatetiempoxactividadfinal(0);
+                updatetiempoxactividadfinal(2);
                 TextVictoria.text = "Ganaste";
                 SonidoVictoria.GetComponent<AudioSource>().Play();
             }
@@ -124,7 +124,7 @@ namespace MadFireOn
                 Agua = Puntaje*10;
                 Textelectricidad.text = Agua.ToString();
                 //Se Guardan las monedas ganadas
-                Debug.Log(Agua.ToString());
+                //Debug.Log(Agua.ToString());
                 CtrlRecursos.SendMessage("SumarAgua",Agua); //Se suma la Electricidad ganada
                 CtrlRecursos.SendMessage("SavePlayer"); //Guarda los datos
             }
@@ -141,26 +141,25 @@ namespace MadFireOn
         }
 
         private void AddTiempoActividad(){
-        tiempoxactividad.id_tiempoactividad = 0;    //Id inicializado en 0
         tiempoxactividad.inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        Debug.Log(tiempoxactividad.inicio);
+        //Debug.Log(tiempoxactividad.inicio);
         tiempoxactividad.final = tiempoxactividad.inicio;       // inicializamos con tiempo final = a inicial
         tiempoxactividad.causa = 0;                             //causa por defecto 0
         tiempoxactividad.usuario_id = SystemSave.usuario.id;
         tiempoxactividad.reim_id = SystemSave.reim.id;
         tiempoxactividad.actividad_id = SystemSave.actividad3.id;
-        //SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+        SystemSave.SaveTiempoActividad(tiempoxactividad);
         }
 
         private void UpdateTiempoActividad(){
             tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
-            //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
+            StartCoroutine(SystemSave.UpdateTiempoActividad(tiempoxactividad.id_tiempoactividad ,tiempoxactividad.final));
         }
 
         private void updatetiempoxactividadfinal(int causa){
             tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
             tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
-            //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
+            StartCoroutine(SystemSave.UpdateTiempoActividadFinal(tiempoxactividad.id_tiempoactividad ,tiempoxactividad.final, tiempoxactividad.causa)); 
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,22 +26,22 @@ public class CtrlActividad1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //AddTiempoActividad(); //agrega a la bbdd
+        AddTiempoActividad(); //agrega a la bbdd
         horaInicio = Time.time;
-        CtrlRecursos = GameObject.Find("CtrlRecursos");        
+        CtrlRecursos = GameObject.Find("CtrlRecursos");
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Vidas==0){
-            //updatetiempoxactividadfinal(1); //agrega final a bbdd
             Duracion = (Time.time - horaInicio);
             Duracion = (int) Duracion;
             //SonidoDerrota.GetComponent<AudioSource>().Play();
             Destroy(GeneradorBasura);
             if (Ventanapuntaje.activeSelf == false){
             Ventanapuntaje.SetActive(true); // activa la ventana puntaje
+            UpdateTiempoActividad();
             TextPuntaje.text = "Puntaje: " + Puntaje.ToString();
             Monedas = Puntaje*10;
             Textmonedas.text = Monedas.ToString();
@@ -53,12 +54,11 @@ public class CtrlActividad1 : MonoBehaviour
         else if (Vidas>0){
             if(tiempoxactividad.id_tiempoactividad != 0){
                 if (Time.time >= nextTime) {
-                    //UpdateTiempoActividad(); // agrega duracion a bbdd
+                    //UpdateTiempoActividad();  //desactivado realentiza el juego
                     nextTime += interval;
                 }
             }
-        }
-
+        }  
         PuntajeJuego.text = "Puntaje: " + Puntaje.ToString();
     }
 
@@ -80,25 +80,26 @@ public class CtrlActividad1 : MonoBehaviour
     }
 
     private void AddTiempoActividad(){
-        tiempoxactividad.id_tiempoactividad = 0;    //Id inicializado en 0
         tiempoxactividad.inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        Debug.Log(tiempoxactividad.inicio);
         tiempoxactividad.final = tiempoxactividad.inicio;       // inicializamos con tiempo final = a inicial
         tiempoxactividad.causa = 0;                             //causa por defecto 0
         tiempoxactividad.usuario_id = SystemSave.usuario.id;
         tiempoxactividad.reim_id = SystemSave.reim.id;
         tiempoxactividad.actividad_id = SystemSave.actividad1.id;
-        //SystemSave.SaveTiempoActividad(tiempoxactividad, this);
+        SystemSave.SaveTiempoActividad(tiempoxactividad);
+        //Debug.Log("ID actualizado: " + tiempoxactividad.id_tiempoactividad);
     }
 
     private void UpdateTiempoActividad(){
-        tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
-        //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);
-    }
-
-    private void updatetiempoxactividadfinal(int causa){
-        tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
-        tiempoxactividad.causa = causa; //Actualizmos la causa para indicar como termino
-        //SystemSave.UpdateTiempoActividad(tiempoxactividad, this);   
+        if(Vidas==0){
+            tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
+            tiempoxactividad.causa = 1; //Actualizmos la causa para indicar como termino
+            StartCoroutine(SystemSave.UpdateTiempoActividadFinal(tiempoxactividad.id_tiempoactividad ,tiempoxactividad.final, tiempoxactividad.causa));
+        }else if (Vidas>0)
+        {
+            tiempoxactividad.final = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");   //actualizamos el tiempo final
+            StartCoroutine(SystemSave.UpdateTiempoActividad(tiempoxactividad.id_tiempoactividad ,tiempoxactividad.final));
+        }
+      
     }
 }

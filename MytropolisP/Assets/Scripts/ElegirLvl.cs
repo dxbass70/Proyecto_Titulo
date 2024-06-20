@@ -9,6 +9,7 @@ public class ElegirLvl : MonoBehaviour
     private string Escena;
     private void TransicionEscena(string NombreEscena)
     {
+        SystemSave.Updateasigna_reim_alumno();  //actualiza la duracion de la sesion
         LevelLoader.SendMessage("LoadLevel", NombreEscena);
     }
 

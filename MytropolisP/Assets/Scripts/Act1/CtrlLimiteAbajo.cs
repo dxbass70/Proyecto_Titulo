@@ -21,7 +21,7 @@ public class CtrlLimiteAbajo : MonoBehaviour
         if(other.gameObject.tag == "Basura"){ //Al chocar con un objeto de tag basura, la basura se destruye
             ActivityCtrl.SendMessage("DisminuirVidas");
             Destroy(other.gameObject);
-            Debug.Log("Basura perdida, -1 Vida");
+            //Debug.Log("Basura perdida, -1 Vida");
         }
     }
 }

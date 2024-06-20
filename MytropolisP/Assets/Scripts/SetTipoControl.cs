@@ -8,12 +8,15 @@ public class SetTipoControl : MonoBehaviour
     public GameObject Auto;
     public bool isPaused = false;
 
+    public GameObject ActivityCtrl;
+
     private void Awake() {
         StartCoroutine(CargandoNivel());  
     }
 
     public void SelectControlTouch(){
         Auto.GetComponent<CtrlAuto>().tipoControl = TipoControl.Touch;
+        ActivityCtrl.SendMessage("AddTiempoActividad");
         isPaused = false;
         Time.timeScale = 1;
         canvas.SetActive(false);
@@ -22,6 +25,7 @@ public class SetTipoControl : MonoBehaviour
 
     public void SelectControlGiro(){
         Auto.GetComponent<CtrlAuto>().tipoControl = TipoControl.Giroscopio;
+        ActivityCtrl.SendMessage("AddTiempoActividad");
         isPaused = false;
         Time.timeScale = 1;
         canvas.SetActive(false);

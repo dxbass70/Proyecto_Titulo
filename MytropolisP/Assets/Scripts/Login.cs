@@ -7,6 +7,7 @@ using System;
 using UnityEngine.Networking;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using UnityEditorInternal;
 
 [Serializable]
 public class Usuario{
@@ -14,6 +15,8 @@ public class Usuario{
     public string loginame;
     public string password;
     public string nombre;
+
+    public DateTime sesion_id;  //Id de la sesion
 }
 public class Login : MonoBehaviour
 {
@@ -28,13 +31,9 @@ public class Login : MonoBehaviour
 
         //[Header("Database Properties")]
         //private string Host = "66.97.47.164";
-        //public string Host = "localhost";
         //private string User = "ulearnet_web";
-        ////public string User = "root";
         //private string Password = "Uchile2020.";
-        //public string Password = "password";
         //private string Database = "ulearnet_reim_pilotaje";
-        //public string Database = "test";
 
         #endregion
 
@@ -58,39 +57,24 @@ public class Login : MonoBehaviour
             usuario.password = contrasenaInput.GetComponent<InputField>().text;
             if (string.IsNullOrWhiteSpace(usuario.loginame) || string.IsNullOrWhiteSpace(usuario.password)) //en caso de que un campo este vacio no se ahce la consulta
             {
-                //print("Nonono ta mal");
                 textError.SetActive(true);
                 return;
             }
-
-            //Se construyen los datos para la conexion a la bbdd
-            //MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            //builder.Server = Host;
-            //builder.Port = 3306;
-            //builder.UserID = User;
-            //builder.Password = Password;
-            //builder.Database = Database;
-
             try
             {
-                //using (MySqlConnection connection = new MySqlConnection(builder.ToString()))
                 using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection()))
                 {
                     connection.Open();
-                    //print("MySQL - Opened Connection");
                     string sqlQuery = "SELECT id,nombres FROM usuario WHERE username='"+usuario.loginame+"'and password='"+usuario.password+"'";
                     try
                     {
-                        //print("Try...");
                         using (MySqlCommand command = new MySqlCommand(sqlQuery, connection))
                         {
-                            //print("MySqlCommand command...");
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                //print("MySqlDataReader reader...");
                                 if (reader.Read())
                                 {
-                                    print("leyendo datos...");
+                                    //print("leyendo datos...");
                                     // Acceder a los datos de cada fila
                                     usuario.id = reader.GetInt32(0);
                                     usuario.nombre = reader.GetString(1);
@@ -101,10 +85,10 @@ public class Login : MonoBehaviour
                                     //SystemSave.usuario.loginame = usuario.loginame;
                                     asigna_reim_alumno();
                                     SceneManager.LoadScene("Ciudad");
-                                    Debug.Log("Ingresando a la ciudad");
+                                    //Debug.Log("Ingresando a la ciudad");
                                 }else
                                 {
-                                    //print("Nonono ta mal"); //no se encontro usuario
+                                    //no se encontro usuario
                                     textError.SetActive(true);
                                 }
                             }
@@ -117,7 +101,7 @@ public class Login : MonoBehaviour
                     }
 
                     
-                    print("MySQL - Closed Connection");
+                    //print("MySQL - Closed Connection");
                     connection.Close();
                 }
             }
@@ -128,20 +112,47 @@ public class Login : MonoBehaviour
         }
 
         private void asigna_reim_alumno(){ //Registramos el inicio de sesion en la base de datos
-            //print("Registrado inicio de sesion....(mentira aun no lo programo :b)");
-            print("Registrado inicio de sesion....");
+            
+            //generar los datos de la sesion
+            DateTime date_inicio = DateTime.Now;    //hora de inicio de la sesion
+            string sesionId = SystemSave.usuario.id + "-" + date_inicio.ToString("yyyy-MM-dd HH:mm:ss:fff");
+            int periodo = 202401;   //periodo 1er Semestre 2024
+            
+            //guardado para actualizar mientras avanza la sesion
+            SystemSave.asigna_reim_alumno = new Asigna_reim_alumno(sesionId, SystemSave.usuario.id, periodo, SystemSave.reim.id, date_inicio, date_inicio);
+            
+            //print("Registrado inicio de sesion....");
+            
+            try{
+                using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                    connection.Open();
+                    string sqlQuery = "INSERT INTO asigna_reim_alumno (sesion_id, usuario_id, periodo_id, reim_id, datetime_inicio, datetime_termino) VALUES (@Valor1, @Valor2, @Valor3, @Valor4, @Valor5, @Valor6)";
+                    try{
+                        using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+                            command.Parameters.AddWithValue("@Valor1", SystemSave.asigna_reim_alumno.sesion_id);  //usuario que envia (por defecto es el mismo que pide)
+                            command.Parameters.AddWithValue("@Valor2", SystemSave.asigna_reim_alumno.usuario_id);  //usuario que pide
+                            command.Parameters.AddWithValue("@Valor3", SystemSave.asigna_reim_alumno.periodo_id);    //recurso que pide
+                            command.Parameters.AddWithValue("@Valor4", SystemSave.asigna_reim_alumno.reim_id);   //cantidad que solicita
+                            command.Parameters.AddWithValue("@Valor5", SystemSave.asigna_reim_alumno.datetime_inicio);   //momento en que hace la solicitud
+                            command.Parameters.AddWithValue("@Valor6", SystemSave.asigna_reim_alumno.datetime_termino);  //por defecto la hora de termino es igual a la de inicio
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            Console.WriteLine($"{rowsAffected} fila(s) afectada(s).");
+                        }
+                            
+                    }
+                    catch (MySqlException exception){
+                        print(exception.Message);
+                    }
+                    //print("MySQL - Closed Connection");
+                    connection.Close();
+                }
+            }
+            catch (MySqlException exception){
+                print(exception.Message);
+            }
         }
 
         #endregion
-
-    /*
-    private void asigna_reim_alumno(){
-        string sesion_id = SystemSave.usuario.id + "-" + SystemSave.reim.id + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); //ajustar a formato
-        string inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        Asigna_reim_alumno datos = new Asigna_reim_alumno(sesion_id, SystemSave.usuario.id, 202101, SystemSave.reim.id, inicio, inicio);
-        SystemSave.asigna_reim_alumno = datos;
-        Debug.Log("Sesion "+SystemSave.asigna_reim_alumno.sesion_id+" registrada");
-        SystemSave.Put_asigna_reim_alumno(SystemSave.asigna_reim_alumno, this);
-    }
-    */
 }
