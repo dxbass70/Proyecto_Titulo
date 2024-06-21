@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
@@ -8,6 +9,8 @@ using System.Collections.Generic;
 using System.Collections;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
+using System.Linq;
 
 
 
@@ -69,7 +72,7 @@ public class Tiempoxactividad{
 
 [Serializable]
 public class dibujo_reim{
-    public int id_imagenes_reim;
+    public int id_dibujo_reim;
     public string sesion_id;
     public int usuario_id;
     public int reim_id;
@@ -394,7 +397,85 @@ public static class SystemSave{
         }
         yield return new WaitForSeconds(1f);
     }
+
+    //Carga y descarga de imagenes
+    public static List<dibujo_reim> ImportDibujo(){ // se importan todos los dibujos del usuario
+        List<dibujo_reim> listDibujos = new List<dibujo_reim>();    //lista para guardar los dibujos (en caso de que se quiera hacer algo mas)
+        
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string selectQuery = "SELECT id_dibujo_reim, imagen FROM dibujo_reim WHERE usuario_id = @usuario_id AND reim_id = @reim_id AND actividad_id = @actividad_id ";
+                
+                try{
+                    using (MySqlCommand command = new MySqlCommand(selectQuery, connection)){
+                        command.Parameters.AddWithValue("@usuario_id", usuario.id);
+                        command.Parameters.AddWithValue("@reim_id", reim.id);
+                        command.Parameters.AddWithValue("@actividad_id", actividad4.id);
+                        using (MySqlDataReader reader = command.ExecuteReader()){
+                            while (reader.Read()){
+                                dibujo_reim dibujo = new dibujo_reim();
+                                // Acceder a los datos de cada fila
+                                dibujo.id_dibujo_reim = Convert.ToInt32(reader["id_dibujo_reim"]);
+                                dibujo.sesion_id = asigna_reim_alumno.sesion_id;
+                                dibujo.usuario_id = usuario.id;
+                                dibujo.reim_id = reim.id;
+                                dibujo.actividad_id = actividad4.id;
+                                dibujo.imagen = (byte[])reader["imagen"];
+                                //Debug.Log("id tiempoactividad: " + tiempoactinicial.id_tiempoactividad);
+                                listDibujos.Add(dibujo);
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+                //Debug.Log("MySQL - Closed Connection");
+                connection.Close();
+            }
+        }
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
+        }
+
+        return listDibujos;
+    }
+
+    public static void ExportDibujo(dibujo_reim dibujo){  //Exporta el dibujo a la base de datos
+        try{
+            using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection())){
+                connection.Open();
+                string sqlQuery = "INSERT INTO dibujo_reim (id_dibujo_reim, sesion_id, usuario_id, reim_id, actividad_id, imagen) VALUES (@id_dibujo_reim, @sesion_id, @usuario_id, @reim_id, @actividad_id, @imagen)";
+                try{
+                    using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
+                        command.Parameters.AddWithValue("@id_dibujo_reim", dibujo.id_dibujo_reim);  //usuario que envia (por defecto es el mismo que pide)
+                        command.Parameters.AddWithValue("@sesion_id", dibujo.sesion_id);  //usuario que pide
+                        command.Parameters.AddWithValue("@usuario_id", dibujo.usuario_id);    //recurso que pide
+                        command.Parameters.AddWithValue("@reim_id", dibujo.reim_id);   //cantidad que solicita
+                        command.Parameters.AddWithValue("@actividad_id", dibujo.actividad_id);   //momento en que hace la solicitud
+                        command.Parameters.AddWithValue("@imagen", dibujo.imagen);  //estado por defecto 0 (no tiene oferta)
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        Console.WriteLine($"{rowsAffected} fila(s) afectada(s).");
+                    }
+                        
+                }
+                catch (MySqlException exception){
+                    Debug.Log(exception.Message);
+                }
+                Debug.Log("MySQL - Closed Connection");
+                connection.Close();
+            }
+        }
+        catch (MySqlException exception){
+            Debug.Log(exception.Message);
+        }
+    }
 }
+
+
 
 public struct ListContainer
 {

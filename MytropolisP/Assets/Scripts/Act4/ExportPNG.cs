@@ -30,11 +30,11 @@ public class ExportPNG : MonoBehaviour
         dibujo.reim_id = SystemSave.reim.id;
         dibujo.actividad_id = SystemSave.actividad4.id;
         dibujo.imagen = imagen;
+        SystemSave.ExportDibujo(dibujo);
     }
 
     private void AddTiempoActividad(){
         tiempoxactividad.inicio = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        //Debug.Log(tiempoxactividad.inicio);
         tiempoxactividad.final = tiempoxactividad.inicio;       // inicializamos con tiempo final = a inicial
         tiempoxactividad.causa = 0;                             //causa por defecto 0
         tiempoxactividad.usuario_id = SystemSave.usuario.id;
