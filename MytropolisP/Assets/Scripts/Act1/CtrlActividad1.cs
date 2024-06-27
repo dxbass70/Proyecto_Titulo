@@ -48,7 +48,7 @@ public class CtrlActividad1 : MonoBehaviour
             Vidas--;//se setean las vidas a -1 para evitar que se repita la funcion
             //Se Guardan las monedas ganadas
             CtrlRecursos.SendMessage("SumarMonedas",Monedas); //Se suman las monedas ganadas
-            //CtrlRecursos.SendMessage("SavePlayer"); //Guarda los datos
+            CtrlRecursos.SendMessage("SavePlayer"); //Guarda los datos
             }
         }
         else if (Vidas>0){

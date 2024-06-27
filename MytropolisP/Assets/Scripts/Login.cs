@@ -7,7 +7,7 @@ using System;
 using UnityEngine.Networking;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using UnityEditorInternal;
+//using UnityEditorInternal;
 
 [Serializable]
 public class Usuario{

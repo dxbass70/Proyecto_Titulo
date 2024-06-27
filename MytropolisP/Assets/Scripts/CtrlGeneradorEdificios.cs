@@ -32,7 +32,7 @@ public class CtrlGeneradorEdificios : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadEdificios();
+        LoadEdificios();    //Se cargan los edificios al inicio de la ejecucion
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class CtrlGeneradorEdificios : MonoBehaviour
         newEdificio.transform.parent = gameObject.transform;
         EdificioData edificioData = new EdificioData(pos, newEdificio.transform.position, newEdificio.GetComponent<CtrlEdificio>().GetUltimoCobro());
         ListaEdificios.Add(edificioData);
-        SystemSave.SaveEdificios (ListaEdificios);
+        SystemSave.UpdateEdificios(ListaEdificios);
     }
 
     public void invokeEdifico(int posicion){
@@ -85,10 +85,10 @@ public class CtrlGeneradorEdificios : MonoBehaviour
 
     }
 
-    private void LoadEdificios(){
+    private void LoadEdificios(){   //Carga los datos de los edificios en la ciudad
         List<EdificioData> EdificiosTemp = SystemSave.LoadEdificios();
 
-        if(EdificiosTemp != null){
+        if(EdificiosTemp != null){  //si hay edificios
             ListaEdificios = EdificiosTemp;
             for (int i = 0; i < ListaEdificios.Count; i++)
             {
