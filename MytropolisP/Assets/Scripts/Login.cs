@@ -83,6 +83,8 @@ public class Login : MonoBehaviour
                                     //Debug.Log("ID: " + usuario.id + ", nombres: " + usuario.nombre);
                                     SystemSave.usuario = usuario; //registramos los datos del usuario para futuras consultas en la sesion de juego
                                     //SystemSave.usuario.loginame = usuario.loginame;
+                                    print(SystemSave.usuario.id);
+                                    print(SystemSave.usuario.nombre);
                                     asigna_reim_alumno();
                                     SceneManager.LoadScene("Ciudad");
                                     //Debug.Log("Ingresando a la ciudad");

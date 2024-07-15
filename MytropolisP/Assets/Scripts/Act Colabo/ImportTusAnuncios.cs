@@ -40,7 +40,7 @@ public class ImportTusAnuncios : MonoBehaviour
                 //Cancelada (estado = 3)    -   NO IMPLEMENTADO, PUEDE SER IMPORTANTE
 
                 //consultamos solo los anuncios que tengan una oferta y sean publicados por el usuario (usuariorecibe_id = SystemSave.usuario.id)
-                string sqlQuery = "SELECT usuarioenvia_id, usuariorecibe_id, elemento_id, catalogo_id ,cantidad, datetime_transac, estado FROM transaccion_reim WHERE usuariorecibe_id = '"+ SystemSave.usuario.id +"' and estado = '1' and (elemento_id='"+ SystemSave.Ulearcoin.id +"'or elemento_id='"+ SystemSave.Agua.id +"'or elemento_id='"+ SystemSave.Electricidad.id +"' )";
+                string sqlQuery = "SELECT usuarioenvia_id, usuariorecibe_id, elemento_id, cantidad, datetime_transac, estado FROM transaccion_reim WHERE usuariorecibe_id = '"+ SystemSave.usuario.id +"' and estado = '1' and (elemento_id='"+ SystemSave.Ulearcoin.id +"'or elemento_id='"+ SystemSave.Agua.id +"'or elemento_id='"+ SystemSave.Electricidad.id +"' )";
                 try{
                     using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
                         using (MySqlDataReader reader = command.ExecuteReader()){
@@ -55,7 +55,7 @@ public class ImportTusAnuncios : MonoBehaviour
                                 int usuarioenvia_id = Convert.ToInt32(reader["usuarioenvia_id"]);
                                 int usuariorecibe_id = Convert.ToInt32(reader["usuariorecibe_id"]);
                                 int elemento_id = Convert.ToInt32(reader["elemento_id"]);
-                                int cantidadOfrece = Convert.ToInt32(reader["catalogo_id"]);    //catalogo_id corresponde a la cantidad de la oferta
+                                int cantidadOfrece = Convert.ToInt32(reader["cantidad"]);    //catalogo_id corresponde a la cantidad de la oferta
                                 DateTime datetime_transac = reader.GetDateTime(reader.GetOrdinal("datetime_transac"));
                                 int estado = Convert.ToInt32(reader["estado"]);
                                 SearchAnuncio(usuarioenvia_id, elemento_id, cantidadOfrece, datetime_transac, estado);
@@ -121,7 +121,7 @@ public class ImportTusAnuncios : MonoBehaviour
         }
         newAnun.nombre = SystemSave.GetUserFullName(id);  //Asignamos el nombre del anunciante
         newAnun.date = date;    //Registramos la fecha de publicacion
-        newAnun.estado = estado;    //Registramos la fecha de publicacion
+        newAnun.estado = estado;    //Registramos el estado
         //Lo agregamos a la lista
         Anuncios.Add(newAnun);
 

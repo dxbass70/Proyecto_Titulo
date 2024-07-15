@@ -30,16 +30,28 @@ public class CtrlRecursos : MonoBehaviour
         
     }
 
-    void SumarMonedas(int monto){
+    public void SumarMonedas(int monto){
         CountMonedas+=monto;
     }
 
-    void SumarElect(int monto){
+    public void SumarElect(int monto){
         CountElect+=monto;
     }
 
-    void SumarAgua(int monto){
+    public void SumarAgua(int monto){
         CountAgua+=monto;
+    }
+
+    public void RestaMonedas(int monto){
+        CountMonedas-=monto;
+    }
+
+    public void RestaElect(int monto){
+        CountElect-=monto;
+    }
+
+    public void RestaAgua(int monto){
+        CountAgua-=monto;
     }
 
     public void SavePlayer(){
