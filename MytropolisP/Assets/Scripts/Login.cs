@@ -24,10 +24,10 @@ public class Login : MonoBehaviour
 
         [Header("login textFields")]
 
-        public InputField usuarioInput;
-        public InputField contrasenaInput;
-        public GameObject textError;
-        private Usuario usuario;
+        public InputField usuarioInput; //Campo para ingresar el usuario
+        public InputField contrasenaInput;  //Campo para ingresar la contraseña
+        public GameObject textError;    //Texto de error en caso de que los datos sean incorrectos
+        private Usuario usuario;    //objeto para almacenar los datos
 
         //[Header("Database Properties")]
         //private string Host = "66.97.47.164";
@@ -55,7 +55,7 @@ public class Login : MonoBehaviour
             usuario = new Usuario();
             usuario.loginame = usuarioInput.GetComponent<InputField>().text;
             usuario.password = contrasenaInput.GetComponent<InputField>().text;
-            if (string.IsNullOrWhiteSpace(usuario.loginame) || string.IsNullOrWhiteSpace(usuario.password)) //en caso de que un campo este vacio no se ahce la consulta
+            if (string.IsNullOrWhiteSpace(usuario.loginame) || string.IsNullOrWhiteSpace(usuario.password)) //en caso de que un campo este vacio no se hace la consulta
             {
                 textError.SetActive(true);
                 return;
@@ -65,6 +65,7 @@ public class Login : MonoBehaviour
                 using (MySqlConnection connection = new MySqlConnection(SystemSave.conexionDB.GetConnection()))
                 {
                     connection.Open();
+                    //Busca un usuario por su usuario y contraseña
                     string sqlQuery = "SELECT id,nombres FROM usuario WHERE username='"+usuario.loginame+"'and password='"+usuario.password+"'";
                     try
                     {
@@ -83,10 +84,10 @@ public class Login : MonoBehaviour
                                     //Debug.Log("ID: " + usuario.id + ", nombres: " + usuario.nombre);
                                     SystemSave.usuario = usuario; //registramos los datos del usuario para futuras consultas en la sesion de juego
                                     //SystemSave.usuario.loginame = usuario.loginame;
-                                    print(SystemSave.usuario.id);
-                                    print(SystemSave.usuario.nombre);
-                                    asigna_reim_alumno();
-                                    SceneManager.LoadScene("Ciudad");
+                                    //print(SystemSave.usuario.id);
+                                    //print(SystemSave.usuario.nombre);
+                                    asigna_reim_alumno();   //Se ejecuta el registro de la sesion
+                                    SceneManager.LoadScene("Ciudad");   //Cargo la siguiente escena del juego
                                     //Debug.Log("Ingresando a la ciudad");
                                 }else
                                 {
@@ -131,12 +132,12 @@ public class Login : MonoBehaviour
                     string sqlQuery = "INSERT INTO asigna_reim_alumno (sesion_id, usuario_id, periodo_id, reim_id, datetime_inicio, datetime_termino) VALUES (@Valor1, @Valor2, @Valor3, @Valor4, @Valor5, @Valor6)";
                     try{
                         using (MySqlCommand command = new MySqlCommand(sqlQuery, connection)){
-                            command.Parameters.AddWithValue("@Valor1", SystemSave.asigna_reim_alumno.sesion_id);  //usuario que envia (por defecto es el mismo que pide)
-                            command.Parameters.AddWithValue("@Valor2", SystemSave.asigna_reim_alumno.usuario_id);  //usuario que pide
-                            command.Parameters.AddWithValue("@Valor3", SystemSave.asigna_reim_alumno.periodo_id);    //recurso que pide
-                            command.Parameters.AddWithValue("@Valor4", SystemSave.asigna_reim_alumno.reim_id);   //cantidad que solicita
-                            command.Parameters.AddWithValue("@Valor5", SystemSave.asigna_reim_alumno.datetime_inicio);   //momento en que hace la solicitud
-                            command.Parameters.AddWithValue("@Valor6", SystemSave.asigna_reim_alumno.datetime_termino);  //por defecto la hora de termino es igual a la de inicio
+                            command.Parameters.AddWithValue("@Valor1", SystemSave.asigna_reim_alumno.sesion_id);  //Id de la sesion
+                            command.Parameters.AddWithValue("@Valor2", SystemSave.asigna_reim_alumno.usuario_id);  //Id del usuario
+                            command.Parameters.AddWithValue("@Valor3", SystemSave.asigna_reim_alumno.periodo_id);   //Id del periodo (1er semestre 2024)
+                            command.Parameters.AddWithValue("@Valor4", SystemSave.asigna_reim_alumno.reim_id);   //id del REIM
+                            command.Parameters.AddWithValue("@Valor5", SystemSave.asigna_reim_alumno.datetime_inicio);   //momento en que se inicia la sesion
+                            command.Parameters.AddWithValue("@Valor6", SystemSave.asigna_reim_alumno.datetime_termino);  //por defecto la hora de termino es igual a la de inicio (se debe actualizar a medida que se usa el REIM)
 
                             int rowsAffected = command.ExecuteNonQuery();
 
